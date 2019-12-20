@@ -1,0 +1,511 @@
+openapi: '3.0.0'
+info:
+  title: Vinyl Store API
+  description: Vinyl Store API
+  version: "1.0.0"
+servers:
+  - url: http://localhost:8080/VinylStore/api/
+
+
+paths:
+  /users:
+    post:
+      summary: Add customer Service
+      description: |
+        No description
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+
+      responses:
+        200:
+          description: Customer created
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Common
+
+  /managers:
+    post:
+      summary: Add manager Service
+      description: |
+        No description
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+
+      responses:
+        200:
+          description: Manager created
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Common
+
+  /users/login:
+    post:
+      summary: Login Service
+      description: |
+        No description
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JwtRequest'
+
+      responses:
+        200:
+          description: Login successfull
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Common
+
+  /vinyls:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Get all vinyls
+      description: |
+        No description
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Common
+
+  /users/{user_id}:
+    delete:
+      security:
+        - bearerAuth: []
+      summary: Delete user Service
+      description: |
+        No description
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: number
+          description: The user ID
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        204:
+          $ref: '#/components/responses/NoContent'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Common
+
+  /customer/cart/detail:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Get cart Service
+      description: |
+        No description
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Customer
+
+  /vinyls/cart/{vinyl_id}:
+    post:
+      security:
+        - bearerAuth: []
+      summary: Add vinyl to cart
+      description: |
+        No description
+      parameters:
+        - in: path
+          name: vinyl_id
+          required: true
+          schema:
+            type: number
+          description: The vinyl ID
+        - in: query
+          name: quantity
+          required: true
+          schema:
+            type: number
+          description: The quantity of vinyls to add
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Customer
+
+  /users/{user_id}/cart/{item_id}:
+    delete:
+      security:
+        - bearerAuth: []
+      summary: Remove vinyl from cart
+      description: |
+        No description
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: number
+          description: The user ID
+        - in: path
+          name: item_id
+          required: true
+          schema:
+            type: number
+          description: The item ID
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Customer
+
+  /{user_id}/orders:
+    put:
+      security:
+        - bearerAuth: []
+      summary: Place order
+      description: |
+        No description
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: number
+          description: The user ID
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Customer
+
+  /vinylsAdd:
+    post:
+      security:
+        - bearerAuth: []
+      summary: Add vinyl to store
+      description: |
+        No description
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Manager
+
+  /vinyls/{vinyl_id}:
+    delete:
+      security:
+        - bearerAuth: []
+      summary: Delete vinyl from store
+      description: |
+        No description
+      parameters:
+        - in: path
+          name: vinyl_id
+          required: true
+          schema:
+            type: number
+          description: The vinyl ID
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Manager
+    put:
+      security:
+        - bearerAuth: []
+      summary: Update vinyl
+      description: |
+        No description
+      requestBody:
+        description: Optional description in *Markdown*
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+      parameters:
+        - in: path
+          name: vinyl_id
+          required: true
+          schema:
+            type: number
+          description: The vinyl ID
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Manager
+
+  /orders/{order_id}:
+    put:
+      security:
+        - bearerAuth: []
+      summary: Update order
+      description: |
+        No description
+      parameters:
+        - in: path
+          name: order_id
+          required: true
+          schema:
+            type: number
+          description: The order ID
+        - in: query
+          name: status
+          required: true
+          schema:
+            type: number
+          description: The status of the order
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Manager
+
+  /customers:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Get all customers
+      description: |
+        No description
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+      tags:
+        - Manager
+
+  /users/{user_id}/orders:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Get order form an user
+      description: |
+        No description
+      parameters:
+        - in: path
+          name: user_id
+          required: true
+          schema:
+            type: number
+          description: The user ID
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/EmailInUse'
+        500:
+          $ref: '#/components/responses/UnexpectedError'
+
+
+      tags:
+        - Manager
+
+components:
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+    UnexpectedError:
+      description: Unexpected error
+    UnexpectedParameters:
+      description: Problem with parameters
+    EmailInUse:
+      description: Email already in use!
+    NoContent:
+      description: No content!
+    Ok:
+      description: Successfull response!
+
+  schemas:
+    User:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        emailAddress:
+          type: string
+        password:
+          type: string
+
+    Item:
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: number
+        description:
+          type: string
+        quantity:
+          type: number
+
+    JwtRequest:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

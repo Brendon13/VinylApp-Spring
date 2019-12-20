@@ -74,14 +74,20 @@ public class CommonController {
 
     @ApiOperation(value = "Create Manager", response = Iterable.class)
     @PostMapping(value = "/managers")
-    public ResponseEntity<Object> addManager(@Valid @RequestBody User user, BindingResult result) {
+    public ResponseEntity<Object> addManager(@Valid @RequestBody User user, BindingResult result) throws JSONException {
+        JSONObject json = new JSONObject();
         if(result.hasErrors()) {
-            return new ResponseEntity<>(errorResponse(result), HttpStatus.BAD_REQUEST);
+            json.put("Message ", errorResponse(result));
+            return new ResponseEntity<>(json.toString(), HttpStatus.BAD_REQUEST);
         }
         if (userService.findByEmailAddress(user.getEmailAddress()) == null) {
             userService.saveManager(user);
-            return new ResponseEntity<>("Manager Created!", HttpStatus.OK);
-        } else return new ResponseEntity<>("Email already in use!", HttpStatus.FORBIDDEN);
+            json.put("Message ", "Manager Created!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.OK);
+        } else {
+            json.put("Message ", "Email already in use!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+        }
     }
 
     @ApiOperation(value = "User Login", response = Iterable.class)
@@ -103,6 +109,7 @@ public class CommonController {
     @ApiOperation(value = "Retrieve all vinyls", response = Iterable.class)
     @GetMapping(value = "/vinyls")
     public ResponseEntity<?> getVinyl(@RequestHeader("Authorization") String auth) throws JSONException{
+        JSONObject jsonErr = new JSONObject();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
 
         if(userService.findByEmailAddress(email) != null && userService.findById(userService.findByEmailAddress(email).getId()) != null) {
@@ -126,18 +133,26 @@ public class CommonController {
 
             return new ResponseEntity<>(json.toString(), HttpStatus.OK);
         }
-        else return new ResponseEntity<>("You are not logged in!", HttpStatus.FORBIDDEN);
+        else{
+            jsonErr.put("Message ", "You are not logged in!");
+            return new ResponseEntity<>(jsonErr.toString(), HttpStatus.FORBIDDEN);
+        }
     }
 
     @ApiOperation(value = "Delete User", response = Iterable.class)
     @DeleteMapping(value = "/users/{user_id}")
-    public @ResponseBody ResponseEntity<Object> deleteUser(@RequestHeader("Authorization") String auth, @PathVariable Long user_id) {
+    public @ResponseBody ResponseEntity<Object> deleteUser(@RequestHeader("Authorization") String auth, @PathVariable Long user_id) throws JSONException {
+        JSONObject json = new JSONObject();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         if(userService.findByEmailAddress(email).getId().equals(user_id)) {
             userService.delete(userService.findById(user_id));
-            return new ResponseEntity<>("User Deleted!", HttpStatus.NO_CONTENT);
+            json.put("Message ", "User Deleted!!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.NO_CONTENT);
         }
-        else return new ResponseEntity<>("User id is not yours!", HttpStatus.FORBIDDEN);
+        else{
+            json.put("Message ", "User id is not yours!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+        }
     }
 
     private void authenticate(String username, String password) throws Exception {

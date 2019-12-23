@@ -51,7 +51,7 @@ public class CommonController {
 
     @ApiOperation(value = "Create User", response = Iterable.class)
     @PostMapping(value = "/users", produces = "application/json")
-    public ResponseEntity<Object> addUser(@Valid @RequestBody User user, @RequestHeader("Authorization") String auth, BindingResult result) throws JSONException {
+    public ResponseEntity<Object> addUser(@Valid @RequestBody User user, BindingResult result) throws JSONException {
         JSONObject json = new JSONObject();
         if(result.hasErrors()) {
             json.put("Message ", errorResponse(result));
@@ -107,7 +107,7 @@ public class CommonController {
     }
 
     @ApiOperation(value = "Retrieve all vinyls", response = Iterable.class)
-    @GetMapping(value = "/vinyls")
+    @GetMapping(value = "/vinyls", produces = "application/json")
     public ResponseEntity<?> getVinyl(@RequestHeader("Authorization") String auth) throws JSONException{
         JSONObject jsonErr = new JSONObject();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));

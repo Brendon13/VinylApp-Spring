@@ -131,7 +131,7 @@ public class CommonController {
 
             json.put("Vinyls", json3);
 
-            return new ResponseEntity<>(json.toString(), HttpStatus.OK);
+            return new ResponseEntity<>(json3.toString(), HttpStatus.OK); //json.toString() to display Vinyls: 
         }
         else{
             jsonErr.put("Message ", "You are not logged in!");

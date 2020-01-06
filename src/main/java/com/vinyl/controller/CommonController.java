@@ -131,7 +131,7 @@ public class CommonController {
 
             json.put("Vinyls", json3);
 
-            return new ResponseEntity<>(json3.toString(), HttpStatus.OK); //json.toString() to display Vinyls: 
+            return new ResponseEntity<>(json3.toString(), HttpStatus.OK); //json.toString() to display Vinyls:
         }
         else{
             jsonErr.put("Message ", "You are not logged in!");
@@ -146,7 +146,7 @@ public class CommonController {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         if(userService.findByEmailAddress(email).getId().equals(user_id)) {
             userService.delete(userService.findById(user_id));
-            json.put("Message ", "User Deleted!!");
+            json.put("Message ", "User Deleted!");
             return new ResponseEntity<>(json.toString(), HttpStatus.NO_CONTENT);
         }
         else{

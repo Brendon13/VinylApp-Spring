@@ -87,30 +87,34 @@ public class CustomerController {
 
     @ApiOperation(value = "Add vinyl to cart", response = Iterable.class)
     @PostMapping(value = "/vinyls/cart/{vinyl_id}")
-    public @ResponseBody ResponseEntity<?> addVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id, @RequestParam Long quantity){
+    public @ResponseBody ResponseEntity<?> addVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id, @RequestParam Long quantity) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
-
+        JSONObject json = new JSONObject();
             try {
                 Item item = itemService.findById(vinyl_id);
                 Cart cart = cartService.findByUserId(userService.findByEmailAddress(email).getId());
                 CartItem cartItem = new CartItem();
 
 
-                if (quantity <= 0)
-                    return new ResponseEntity<>("Quantity can't be negative or zero!", HttpStatus.FORBIDDEN);
+                if (quantity <= 0){
+                    json.put("Message ", "Quantity can't be negative or zero!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                }
                 else if (quantity > item.getQuantity()) {
-                    return new ResponseEntity<>("Quantity too big!", HttpStatus.FORBIDDEN);
+                    json.put("Message ", "Quantity too big!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
                 } else {
                     cartItem.setItem(item);
                     cartItem.setCart(cart);
                     cartItem.setQuantity(quantity);
                     cartItemService.save(cartItem);
-
-                    return ResponseEntity.ok("Item added to cart!");
+                    json.put("Message ", "Item added to cart!");
+                    return ResponseEntity.ok(json.toString());
                 }
             }
-            catch (NullPointerException e){
-                return new ResponseEntity<>("Quantity can't be null!", HttpStatus.FORBIDDEN);
+            catch (NullPointerException | JSONException e){
+                json.put("Message ", "Quantity can't be null!");
+                return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
             }
     }
 

@@ -67,7 +67,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
             "/VinylStore/api/users",
             "/VinylStore/api/users/login",
-            "/VinylStore/api/managers"
+            "/VinylStore/api/managers",
+            "/VinylStore/api/verifyManager"
     };
 
     @Override

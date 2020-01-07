@@ -29,9 +29,6 @@ public class User {
     @NotBlank(message = "Password can't be blank")
     private String password;
 
-//    @ApiModelProperty(hidden = true)
-//    private String authToken;
-
     @ApiModelProperty(hidden = true)
     @OneToOne
     @JoinColumn(name = "user_role_id", nullable = false, foreignKey=@ForeignKey(name = "Fk_user_user_role_id"))

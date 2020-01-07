@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/config/WebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/model/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,22 +234,22 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1578294376092" />
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1578321443802">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1578398258414">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578321443802" />
-    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1578321443802">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578398258414" />
+    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1578398258414">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578321443802" />
-    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1578321443802">
+    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578398258414" />
+    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1578398258413">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578321443802" />
-    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1578321443802">
+    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578398258413" />
+    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1578398258414">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578321443802" />
+    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578398258414" />
     <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1576509714802">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -277,10 +278,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="93" y="93" width="1862" height="926" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1576847077992" />
-    <state x="721" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578294361028">
+    <state x="721" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578378935630">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="721" y="380" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1578294361028" />
+    <state x="721" y="380" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1578378935630" />
     <state x="681" y="259" key="run.anything.popup" timestamp="1576495375986">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

@@ -140,7 +140,7 @@ public class CommonController {
     }
 
     @ApiOperation(value = "Delete User", response = Iterable.class)
-    @DeleteMapping(value = "/users/{user_id}")
+    @DeleteMapping(value = "/users/{user_id}" , produces = "application/json")
     public @ResponseBody ResponseEntity<Object> deleteUser(@RequestHeader("Authorization") String auth, @PathVariable Long user_id) throws JSONException {
         JSONObject json = new JSONObject();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
@@ -153,6 +153,15 @@ public class CommonController {
             json.put("Message ", "User id is not yours!");
             return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
         }
+    }
+
+    @ApiOperation(value = "Verify If Manager", response = Iterable.class)
+    @GetMapping(value = "/verifyManager")
+    public ResponseEntity<?> verifyManager(@RequestHeader("Authorization") String auth) throws JSONException {
+        String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+        JSONObject json = new JSONObject();
+        json.put("role", userService.findByEmailAddress(email).getUserRole().getId() == 2);
+        return ResponseEntity.ok(json.toString());
     }
 
     private void authenticate(String username, String password) throws Exception {

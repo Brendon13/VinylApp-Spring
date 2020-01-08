@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.EntityNotFoundException;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
@@ -87,7 +88,7 @@ public class CustomerController {
 
     @ApiOperation(value = "Add vinyl to cart", response = Iterable.class)
     @PostMapping(value = "/vinyls/cart/{vinyl_id}")
-    public @ResponseBody ResponseEntity<?> addVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id, @RequestParam Long quantity) throws JSONException {
+    public @ResponseBody ResponseEntity<?> addVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id, @RequestBody CartItemDTO cartItemDTO) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         JSONObject json = new JSONObject();
             try {
@@ -96,17 +97,17 @@ public class CustomerController {
                 CartItem cartItem = new CartItem();
 
 
-                if (quantity <= 0){
+                if (cartItemDTO.getQuantity() <= 0){
                     json.put("Message ", "Quantity can't be negative or zero!");
                     return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
                 }
-                else if (quantity > item.getQuantity()) {
+                else if (cartItemDTO.getQuantity() > item.getQuantity()) {
                     json.put("Message ", "Quantity too big!");
                     return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
                 } else {
                     cartItem.setItem(item);
                     cartItem.setCart(cart);
-                    cartItem.setQuantity(quantity);
+                    cartItem.setQuantity(cartItemDTO.getQuantity());
                     cartItemService.save(cartItem);
                     json.put("Message ", "Item added to cart!");
                     return ResponseEntity.ok(json.toString());
@@ -114,6 +115,10 @@ public class CustomerController {
             }
             catch (NullPointerException | JSONException e){
                 json.put("Message ", "Quantity can't be null!");
+                return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+            }
+            catch (EntityNotFoundException e){
+                json.put("Message ", "Not a valid item ID!");
                 return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
             }
     }

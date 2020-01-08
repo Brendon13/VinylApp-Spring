@@ -50,7 +50,7 @@ public class CustomerController {
 
 
     @ApiOperation(value = "Get cart details", response = Iterable.class)
-    @GetMapping(value = "/customer/cart/detail")
+    @GetMapping(value = "/customer/cart/detail", produces = "application/json")
     public ResponseEntity<?> getCart(@RequestHeader("Authorization") String auth) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
 
@@ -63,8 +63,8 @@ public class CustomerController {
             }
 
             JSONObject json = new JSONObject();
-            json.put("Number of items", cartItem.size());
-            json.put("Total cost", totalPrice);
+            json.put("NumberOfItems", cartItem.size());
+            json.put("TotalCost", totalPrice);
 
             JSONArray json3 = new JSONArray();
 
@@ -77,12 +77,12 @@ public class CustomerController {
                 json3.put(json2);
             }
 
-            json.put("Items", json3);
+            json.put("ItemsInCart", json3);
 
 
             if (cartItem.size() == 0)
                 return new ResponseEntity<>("No items in cart", HttpStatus.OK);
-            else return new ResponseEntity<>(json.toString(), HttpStatus.OK);
+            else return new ResponseEntity<>(json3.toString(), HttpStatus.OK);
 
     }
 

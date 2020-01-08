@@ -52,8 +52,10 @@ public class CustomerController {
     @ApiOperation(value = "Get cart details", response = Iterable.class)
     @GetMapping(value = "/customer/cart/detail", produces = "application/json")
     public ResponseEntity<?> getCart(@RequestHeader("Authorization") String auth) throws JSONException {
+        JSONObject jsonError = new JSONObject();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
 
+        if(userService.findByEmailAddress(email).getUserRole().getId() == 1) {
             Cart cart = cartService.findByUserId(userService.findByEmailAddress(email).getId());
             List<CartItem> cartItem = cartItemService.findByCartId(cart.getId());
             double totalPrice = 0;
@@ -80,10 +82,17 @@ public class CustomerController {
             json.put("ItemsInCart", json3);
 
 
-            if (cartItem.size() == 0)
-                return new ResponseEntity<>("No items in cart", HttpStatus.OK);
-            else return new ResponseEntity<>(json3.toString(), HttpStatus.OK);
-
+            if(cartItem.size() == 0){
+                jsonError.put("Message", "No items in cart!");
+                return new ResponseEntity<>(jsonError.toString(), HttpStatus.NOT_FOUND);
+            }
+            else return new ResponseEntity<>(json3.toString(), HttpStatus.OK); //json.toString() to display as in req for backend
+        }
+        else
+            {
+            jsonError.put("Message", "You are manager!");
+            return new ResponseEntity<>(jsonError.toString(), HttpStatus.FORBIDDEN);
+        }
     }
 
     @ApiOperation(value = "Add vinyl to cart", response = Iterable.class)

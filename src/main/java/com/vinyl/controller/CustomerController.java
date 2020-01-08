@@ -96,7 +96,7 @@ public class CustomerController {
     }
 
     @ApiOperation(value = "Add vinyl to cart", response = Iterable.class)
-    @PostMapping(value = "/vinyls/cart/{vinyl_id}")
+    @PostMapping(value = "/vinyls/cart/{vinyl_id}", produces = "application/json")
     public @ResponseBody ResponseEntity<?> addVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id, @RequestBody CartItemDTO cartItemDTO) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         JSONObject json = new JSONObject();
@@ -133,9 +133,10 @@ public class CustomerController {
     }
 
     @ApiOperation(value = "Remove vinyl from cart", response = Iterable.class)
-    @DeleteMapping(value = "/users/{user_id}/cart/{item_id}")
-    public @ResponseBody ResponseEntity<?> removeVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long user_id, @PathVariable Long item_id){
+    @DeleteMapping(value = "/users/{user_id}/cart/{item_id}", produces = "application/json")
+    public @ResponseBody ResponseEntity<?> removeVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long user_id, @PathVariable Long item_id) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+        JSONObject json = new JSONObject();
         final List<Boolean> noItems = new ArrayList<>();
 
         Cart cart = cartService.findByUserId(user_id);
@@ -148,12 +149,23 @@ public class CustomerController {
                         noItems.add(true);
                     else cartItemService.delete(cItem);
                 });
-                if (noItems.contains(true))
-                    return new ResponseEntity<>("No items with that ID in cart!", HttpStatus.FORBIDDEN);
-                else return ResponseEntity.ok("Item deleted from cart!");
-            } else return new ResponseEntity<>("You are not logged in", HttpStatus.FORBIDDEN);
+                if (noItems.contains(true)){
+                    json.put("Message ", "No items with that ID in cart!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                }
+                else{
+                    json.put("Message ", "Item deleted from cart!");
+                    return ResponseEntity.ok(json.toString());
+                }
+            } else{
+                json.put("Message ", "You are not logged in");
+                return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+            }
         }
-        else return new ResponseEntity<>("No items in cart!", HttpStatus.FORBIDDEN);
+        else{
+            json.put("Message ", "No items in cart!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+        }
     }
 
     @ApiOperation(value = "Place order", response = Iterable.class)

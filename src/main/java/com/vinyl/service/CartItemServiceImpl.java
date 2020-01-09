@@ -24,6 +24,16 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
+    public CartItem findByItemIdAndCartId(Long itemId, Long cartId){
+        List<CartItem> cartItem = cartItemRepository.findByCartId(cartId);
+        final CartItem[] cartItemToReturn = {new CartItem()};
+        cartItem.forEach(cItem -> {
+            cartItemToReturn[0] = cartItemRepository.findByItemId(itemId);
+        });
+        return cartItemToReturn[0];
+    }
+
+    @Override
     public void save(CartItem cartItem){
         cartItemRepository.save(cartItem);
     }

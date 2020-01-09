@@ -73,7 +73,7 @@ public class CommonController {
     }
 
     @ApiOperation(value = "Create Manager", response = Iterable.class)
-    @PostMapping(value = "/managers")
+    @PostMapping(value = "/managers", produces = "application/json")
     public ResponseEntity<Object> addManager(@Valid @RequestBody User user, BindingResult result) throws JSONException {
         JSONObject json = new JSONObject();
         if(result.hasErrors()) {
@@ -91,13 +91,20 @@ public class CommonController {
     }
 
     @ApiOperation(value = "User Login", response = Iterable.class)
-    @PostMapping(value = "/users/login")
+    @PostMapping(value = "/users/login", produces = "application/json")
     public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody JwtRequest authenticationRequest, BindingResult result) throws Exception {
+        JSONObject json = new JSONObject();
         if(result.hasErrors()) {
             return new ResponseEntity<>(errorResponse(result), HttpStatus.BAD_REQUEST);
         }
 
-        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
+        }
+        catch (BadCredentialsException e) {
+            json.put("Message", "User Credentials Invalid!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+        }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 
@@ -140,19 +147,14 @@ public class CommonController {
     }
 
     @ApiOperation(value = "Delete User", response = Iterable.class)
-    @DeleteMapping(value = "/users/{user_id}" , produces = "application/json")
-    public @ResponseBody ResponseEntity<Object> deleteUser(@RequestHeader("Authorization") String auth, @PathVariable Long user_id) throws JSONException {
+    @DeleteMapping(value = "/users/delete" , produces = "application/json")
+    public @ResponseBody ResponseEntity<Object> deleteUser(@RequestHeader("Authorization") String auth) throws JSONException {
         JSONObject json = new JSONObject();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
-        if(userService.findByEmailAddress(email).getId().equals(user_id)) {
-            userService.delete(userService.findById(user_id));
-            json.put("Message ", "User Deleted!");
-            return new ResponseEntity<>(json.toString(), HttpStatus.NO_CONTENT);
-        }
-        else{
-            json.put("Message ", "User id is not yours!");
-            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
-        }
+        userService.delete(userService.findById(userService.findByEmailAddress(email).getId()));
+        json.put("Message ", "User Deleted!");
+        return ResponseEntity.ok(json.toString());
+
     }
 
     @ApiOperation(value = "Verify If Manager", response = Iterable.class)
@@ -162,15 +164,6 @@ public class CommonController {
         JSONObject json = new JSONObject();
         json.put("role", userService.findByEmailAddress(email).getUserRole().getId() == 2);
         return ResponseEntity.ok(json.toString());
-    }
-
-    private void authenticate(String username, String password) throws Exception {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        }
-         catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
-        }
     }
 
     private ArrayList errorResponse(BindingResult result){

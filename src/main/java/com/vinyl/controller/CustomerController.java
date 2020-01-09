@@ -72,6 +72,7 @@ public class CustomerController {
 
             for (int i = 0; i < (long) cartItem.size(); i++) {
                 JSONObject json2 = new JSONObject();
+                json2.put("Id", cartItem.get(i).getItem().getId());
                 json2.put("Name", cartItem.get(i).getItem().getName());
                 json2.put("Description", cartItem.get(i).getItem().getDescription());
                 json2.put("Price", cartItem.get(i).getItem().getPrice());
@@ -105,7 +106,6 @@ public class CustomerController {
                 Cart cart = cartService.findByUserId(userService.findByEmailAddress(email).getId());
                 CartItem cartItem = new CartItem();
 
-
                 if (cartItemDTO.getQuantity() <= 0){
                     json.put("Message ", "Quantity can't be negative or zero!");
                     return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
@@ -114,11 +114,17 @@ public class CustomerController {
                     json.put("Message ", "Quantity too big!");
                     return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
                 } else {
-                    cartItem.setItem(item);
-                    cartItem.setCart(cart);
+                    if(cartItemService.findByItemIdAndCartId(vinyl_id, cart.getId()).getId() != null){
+                        cartItem = cartItemService.findByItemIdAndCartId(vinyl_id, cart.getId());
+                        json.put("Message ", "Item updated from cart!");
+                    }
+                    else {
+                        cartItem.setItem(item);
+                        cartItem.setCart(cart);
+                        json.put("Message ", "Item added to cart!");
+                    }
                     cartItem.setQuantity(cartItemDTO.getQuantity());
                     cartItemService.save(cartItem);
-                    json.put("Message ", "Item added to cart!");
                     return ResponseEntity.ok(json.toString());
                 }
             }
@@ -133,17 +139,17 @@ public class CustomerController {
     }
 
     @ApiOperation(value = "Remove vinyl from cart", response = Iterable.class)
-    @DeleteMapping(value = "/users/{user_id}/cart/{item_id}", produces = "application/json")
-    public @ResponseBody ResponseEntity<?> removeVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long user_id, @PathVariable Long item_id) throws JSONException {
+    @DeleteMapping(value = "/users/cart/{item_id}", produces = "application/json")
+    public @ResponseBody ResponseEntity<?> removeVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long item_id) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         JSONObject json = new JSONObject();
         final List<Boolean> noItems = new ArrayList<>();
 
-        Cart cart = cartService.findByUserId(user_id);
+        Cart cart = cartService.findByUserId(userService.findByEmailAddress(email).getId());
         List<CartItem> cartItem = cartItemService.findByCartId(cart.getId());
 
         if(!cartItem.isEmpty()) {
-            if (userService.findByEmailAddress(email).getId().equals(user_id)) {
+            if (userService.findByEmailAddress(email).getId().equals(userService.findByEmailAddress(email).getId())) {
                 cartItem.forEach(cItem -> {
                     if (cartItemService.findByItemId(item_id) == null)
                         noItems.add(true);
@@ -169,15 +175,14 @@ public class CustomerController {
     }
 
     @ApiOperation(value = "Place order", response = Iterable.class)
-    @PutMapping(value = "/{user_id}/orders", produces = "application/json")
-    public @ResponseBody ResponseEntity<?> placeOrder(@RequestHeader("Authorization") String auth, @PathVariable Long user_id) throws JSONException {
+    @PutMapping(value = "/orders", produces = "application/json")
+    public @ResponseBody ResponseEntity<?> placeOrder(@RequestHeader("Authorization") String auth) throws JSONException {
         JSONObject json = new JSONObject();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
-        if(userService.findByEmailAddress(email).getId().equals(user_id)){
             List <Boolean> quantityResponse = new ArrayList<>();
             Order order = new Order();
 
-            Cart cart = cartService.findByUserId(user_id);
+            Cart cart = cartService.findByUserId(userService.findByEmailAddress(email).getId());
             List<CartItem> cartItem = cartItemService.findByCartId(cart.getId());
 
             double totalPrice = 0;
@@ -198,7 +203,7 @@ public class CustomerController {
             }
             else{
                 cartItem.forEach(cItem -> cItem.getItem().setQuantity(cItem.getItem().getQuantity()-cItem.getQuantity()));
-                order.setUser(userService.findById(user_id));
+                order.setUser(userService.findById(userService.findByEmailAddress(email).getId()));
                 order.setCreatedAt(new Date());
                 order.setUpdatedAt(new Date());
                 order.setStatus(statusService.findById(1L));
@@ -211,10 +216,32 @@ public class CustomerController {
                 json.put("Message ", "Order placed!");
                 return ResponseEntity.ok(json.toString());
             }
+    }
+
+    @ApiOperation(value = "Get order", response = Iterable.class)
+    @GetMapping(value = "/users/orders", produces = "application/json")
+    public ResponseEntity<?> getUserOrder(@RequestHeader("Authorization") String auth) throws JSONException {
+        String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+        JSONObject json = new JSONObject();
+        List<Order> orders = orderService.findByUserId(userService.findByEmailAddress(email).getId());
+
+        if(orders.isEmpty())
+            {
+                json.put("Message ", "No Orders placed!");
+                return new ResponseEntity<>(json.toString(), HttpStatus.BAD_REQUEST);
+            }
+
+        JSONArray json3 = new JSONArray();
+
+        for (int i = 0; i < (long) orders.size(); i++) {
+            JSONObject json2 = new JSONObject();
+            json2.put("Id", orders.get(i).getId());
+            json2.put("Cost", orders.get(i).getTotal_price());
+            json2.put("OrderDate", orders.get(i).getCreatedAt());
+            json2.put("Status", orders.get(i).getStatus().getStatus());
+            json3.put(json2);
         }
-        else {
-            json.put("Message ", "Your id does not correspond!");
-            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
-        }
+
+        return new ResponseEntity<>(json3.toString(), HttpStatus.OK);
     }
 }

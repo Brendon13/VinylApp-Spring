@@ -169,8 +169,9 @@ public class CustomerController {
     }
 
     @ApiOperation(value = "Place order", response = Iterable.class)
-    @PutMapping(value = "/{user_id}/orders")
-    public @ResponseBody ResponseEntity<?> placeOrder(@RequestHeader("Authorization") String auth, @PathVariable Long user_id){
+    @PutMapping(value = "/{user_id}/orders", produces = "application/json")
+    public @ResponseBody ResponseEntity<?> placeOrder(@RequestHeader("Authorization") String auth, @PathVariable Long user_id) throws JSONException {
+        JSONObject json = new JSONObject();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         if(userService.findByEmailAddress(email).getId().equals(user_id)){
             List <Boolean> quantityResponse = new ArrayList<>();
@@ -191,8 +192,10 @@ public class CustomerController {
                     quantityResponse.add(false);
             });
 
-            if(quantityResponse.contains(false))
-                return new ResponseEntity<>("No more items availabile", HttpStatus.BAD_REQUEST);
+            if(quantityResponse.contains(false)) {
+                json.put("Message ", "No more items availabile!");
+                return new ResponseEntity<>(json.toString(), HttpStatus.BAD_REQUEST);
+            }
             else{
                 cartItem.forEach(cItem -> cItem.getItem().setQuantity(cItem.getItem().getQuantity()-cItem.getQuantity()));
                 order.setUser(userService.findById(user_id));
@@ -205,10 +208,13 @@ public class CustomerController {
                 cartItem.forEach(cItem -> {
                     cartItemService.delete(cItem);
                 });
-
-                return ResponseEntity.ok("Order placed!");
+                json.put("Message ", "Order placed!");
+                return ResponseEntity.ok(json.toString());
             }
         }
-        else return new ResponseEntity<>("Your id does not correspond", HttpStatus.FORBIDDEN);
+        else {
+            json.put("Message ", "Your id does not correspond!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+        }
     }
 }

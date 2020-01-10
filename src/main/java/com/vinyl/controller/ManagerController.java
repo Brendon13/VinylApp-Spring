@@ -86,7 +86,7 @@ public class ManagerController {
     }
 
     @ApiOperation(value = "Delete vinyl from store", response = Iterable.class)
-    @DeleteMapping(value = "/vinyls/{vinyl_id}")
+    @DeleteMapping(value = "/vinyls/{vinyl_id}", produces = "application/json")
     public @ResponseBody ResponseEntity<?> deleteVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         JSONObject json = new JSONObject();
@@ -116,33 +116,45 @@ public class ManagerController {
     }
 
     @ApiOperation(value = "Update vinyl", response = Iterable.class)
-    @PutMapping(value = "/vinyls/{vinyl_id}")
-    public @ResponseBody ResponseEntity<?> updateVinyl(@RequestHeader("Authorization") String auth, @RequestBody Item vinyl, @PathVariable Long vinyl_id){
+    @PutMapping(value = "/vinyls/update/{vinyl_id}", produces = "application/json")
+    public @ResponseBody ResponseEntity<?> updateVinyl(@RequestHeader("Authorization") String auth, @RequestBody Item vinyl, @PathVariable Long vinyl_id) throws JSONException {
         Item item = new Item();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+        JSONObject json = new JSONObject();
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
             try {
-                if (vinyl.getQuantity() <= 0)
-                    return new ResponseEntity<>("Quantity can't be negative!", HttpStatus.FORBIDDEN);
-                else if(vinyl.getPrice() <= 0)
-                    return new ResponseEntity<>("Price can't be negative!", HttpStatus.FORBIDDEN);
-                else if(itemService.findById(vinyl_id) != null){
+                if (vinyl.getQuantity() <= 0){
+                    json.put("Message", "Quantity can't be negative!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                }
+                else if(vinyl.getPrice() <= 0){
+                    json.put("Message", "Price can't be negative!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                }
+                else if(itemService.findById(vinyl_id).isPresent()){
+                    item.setId(vinyl_id);
                     item.setQuantity(vinyl.getQuantity());
                     item.setDescription(vinyl.getDescription());
                     item.setName(vinyl.getName());
                     item.setPrice(vinyl.getPrice());
-                    item.setId(vinyl_id);
                     itemService.save(item);
-
-                    return ResponseEntity.ok("Item updated!");
+                    json.put("Message", "Item updated!");
+                    return ResponseEntity.ok(json.toString());
                 }
-                else return new ResponseEntity<>("Item doesn't exists!", HttpStatus.FORBIDDEN);
+                else{
+                    json.put("Message", "Item doesn't exists!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                }
             }
-            catch (NullPointerException e){
-                return new ResponseEntity<>("Quantity can't be null!", HttpStatus.FORBIDDEN);
+            catch (NullPointerException | JSONException e){
+                json.put("Message", "Quantity can't be null!");
+                return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
             }
         }
-        else return new ResponseEntity<>("You are not a manager!", HttpStatus.FORBIDDEN);
+        else{
+            json.put("Message", "You are not a manager!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+        }
     }
 
     @ApiOperation(value = "Update order", response = Iterable.class)

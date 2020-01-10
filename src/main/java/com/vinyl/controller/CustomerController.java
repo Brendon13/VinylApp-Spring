@@ -117,7 +117,7 @@ public class CustomerController {
                         json.put("Message ", "Quantity too big!");
                         return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
                     } else {
-                        if(cartItemService.findByItemIdAndCartId(vinyl_id, cart.getId()).isPresent()){
+                        if(cartItemService.findByItemIdAndCartId(vinyl_id, cart.getId()).isPresent() && cartItemService.findByItemIdAndCartId(vinyl_id, cart.getId()).get().getCart() != null){
                             cartItem = cartItemService.findByItemIdAndCartId(vinyl_id, cart.getId()).get();
                             json.put("Message ", "Item updated from cart!");
                         }

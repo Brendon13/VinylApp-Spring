@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a6ebc16-1575-44d2-8e0e-6e631aae8654" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/model/StatusDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vinyl/controller/ManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinyl/controller/ManagerController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,22 +58,9 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\resources\config" />
-      <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\resources" />
-      <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main" />
-      <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl" />
-      <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\resources\vinylApp" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.vinyl.controller" />
       <recent name="com.vinyl.service" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.vinyl.config" />
-      <recent name="com.vinyl.model" />
-      <recent name="com.vinyl.service" />
-      <recent name="com.vinyl.validator" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\VinylApp\VinylApp-frontEnd\src\main\webapp" />
@@ -80,6 +68,19 @@
       <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\test" />
       <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\resources" />
       <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\service" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.vinyl.config" />
+      <recent name="com.vinyl.model" />
+      <recent name="com.vinyl.service" />
+      <recent name="com.vinyl.validator" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\resources\config" />
+      <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\resources" />
+      <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main" />
+      <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl" />
+      <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\resources\vinylApp" />
     </key>
   </component>
   <component name="RunManager" selected="Application.VinylApplication">
@@ -230,6 +231,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="705" y="284" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1576135220231" />
+    <state x="822" y="415" width="403" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1578665402515">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="822" y="415" width="403" height="290" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.2048.1112@0.0.2048.1112" timestamp="1578665402515" />
     <state x="570" y="311" key="#org.jetbrains.debugger.memory.view.InstancesWindow" timestamp="1576143073145">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -246,38 +251,38 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1578294376092" />
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1578660906417">
+    <state width="2005" height="376" key="GridCell.Tab.0.bottom" timestamp="1578667643380">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578660906417" />
-    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1578660906417">
+    <state width="2005" height="376" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578667643380" />
+    <state width="2005" height="376" key="GridCell.Tab.0.center" timestamp="1578667643380">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578660906417" />
-    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1578660906417">
+    <state width="2005" height="376" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578667643380" />
+    <state width="2005" height="376" key="GridCell.Tab.0.left" timestamp="1578667643380">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578660906417" />
-    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1578660906417">
+    <state width="2005" height="376" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578667643380" />
+    <state width="2005" height="376" key="GridCell.Tab.0.right" timestamp="1578667643380">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578660906417" />
-    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1578656598512">
+    <state width="2005" height="376" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578667643380" />
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1578667643380">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578656598512" />
-    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1578656598512">
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578667643380" />
+    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1578667643380">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578656598512" />
-    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1578656598512">
+    <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578667643380" />
+    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1578667643380">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578656598512" />
-    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1578656598512">
+    <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578667643380" />
+    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1578667643380">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578656598512" />
+    <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578667643380" />
     <state x="533" y="198" key="SettingsEditor" timestamp="1576846958387">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -306,6 +311,27 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="687" y="243" width="672" height="678" key="search.everywhere.popup/0.0.2048.1112@0.0.2048.1112" timestamp="1576222902462" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java</url>
+          <line>129</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java</url>
+          <line>108</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java</url>
+          <line>218</line>
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="se.expertsystem.intellij.aop.aspectj.AspectJProjectComponent">
     <setting name="isActivated" value="false" />

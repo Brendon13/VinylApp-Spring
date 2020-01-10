@@ -158,11 +158,12 @@ public class ManagerController {
     }
 
     @ApiOperation(value = "Update order", response = Iterable.class)
-    @PutMapping(value = "/orders/{order_id}")
-    public @ResponseBody ResponseEntity<?> updateOrder(@RequestHeader("Authorization") String auth, @RequestBody StatusDTO status, @PathVariable Long order_id){
+    @PutMapping(value = "/orders/{order_id}", produces = "application/json")
+    public @ResponseBody ResponseEntity<?> updateOrder(@RequestHeader("Authorization") String auth, @RequestBody StatusDTO status, @PathVariable Long order_id) throws JSONException {
         Order order;
         Date date = new Date();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+        JSONObject json = new JSONObject();
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
             if(orderService.findById(order_id) != null){
                 if(status.getId() == 1 || status.getId() == 2){
@@ -171,13 +172,23 @@ public class ManagerController {
                     order.setUpdatedAt(date);
                     orderService.save(order);
 
-                    return ResponseEntity.ok("Order status changed!");
+                    json.put("Message", "Order status changed!");
+                    return ResponseEntity.ok(json.toString());
                 }
-                else return new ResponseEntity<>("Status is not a valid Id!", HttpStatus.FORBIDDEN);
+                else{
+                    json.put("Message", "Status is not a valid Id!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                }
             }
-            else return new ResponseEntity<>("Order doesn't exist!", HttpStatus.NOT_FOUND);
+            else{
+                json.put("Message", "Order doesn't exist!");
+                return new ResponseEntity<>(json.toString(), HttpStatus.NOT_FOUND);
+            }
         }
-        else return new ResponseEntity<>("You are not a manager!", HttpStatus.FORBIDDEN);
+        else{
+            json.put("Message", "You are not a manager!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+        }
     }
 
     @ApiOperation(value = "Get all customers", response = Iterable.class)

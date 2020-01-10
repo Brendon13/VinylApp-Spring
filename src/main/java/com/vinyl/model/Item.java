@@ -1,5 +1,7 @@
 package com.vinyl.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,6 +24,10 @@ public class Item {
 
     @NotNull(message = "Quantity can't be blank")
     private Long quantity;
+
+    @ApiModelProperty(hidden = true)
+    @OneToOne(mappedBy="item", cascade = CascadeType.ALL, orphanRemoval = true)
+    private CartItem cartItem;
 
     public Long getId() {
         return id;
@@ -61,6 +67,14 @@ public class Item {
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
+    }
+
+    public CartItem getCartItem() {
+        return cartItem;
+    }
+
+    public void setCartItem(CartItem cartItem) {
+        this.cartItem = cartItem;
     }
 }
 

@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9a6ebc16-1575-44d2-8e0e-6e631aae8654" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/customer/AddVinylToCartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/customer/AddVinylToCartTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinyl/controller/ManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinyl/controller/ManagerController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +82,7 @@
       <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\service" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AddVinylToCartTest">
+  <component name="RunManager" selected="Application.VinylApplication">
     <configuration name="VinylApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vinyl.VinylApplication" />
       <module name="VinylStore" />
@@ -157,9 +159,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.VinylApplication" />
         <item itemvalue="JUnit.AddVinylToCartTest" />
         <item itemvalue="JUnit.AddVinylToCartTest.addVinylToCartTestWithQuantityOK" />
-        <item itemvalue="Application.VinylApplication" />
         <item itemvalue="JUnit.ItemServiceTest" />
         <item itemvalue="JUnit.UpdateVinylTest" />
       </list>
@@ -220,10 +222,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="795" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1576502419132" />
-    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1578471462759">
+    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1578657306584">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1578471462759" />
+    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1578657306584" />
     <state x="705" y="284" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576135220231">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -244,38 +246,38 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1578294376092" />
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1578650398339">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1578657334210">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578650398339" />
-    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1578650398339">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578657334210" />
+    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1578657334210">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578650398339" />
-    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1578650398339">
+    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578657334210" />
+    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1578657334210">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578650398339" />
-    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1578650398339">
+    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578657334210" />
+    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1578657334210">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578650398339" />
-    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1578649138889">
+    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578657334210" />
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1578656598512">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578649138889" />
-    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1578649138889">
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578656598512" />
+    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1578656598512">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578649138889" />
-    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1578649138889">
+    <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578656598512" />
+    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1578656598512">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578649138889" />
-    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1578649138889">
+    <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578656598512" />
+    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1578656598512">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578649138889" />
+    <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578656598512" />
     <state x="533" y="198" key="SettingsEditor" timestamp="1576846958387">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -312,6 +314,21 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java</url>
           <line>94</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java</url>
+          <line>95</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java</url>
+          <line>97</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

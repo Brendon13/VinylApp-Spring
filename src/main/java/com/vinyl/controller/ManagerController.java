@@ -93,7 +93,8 @@ public class ManagerController {
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
             try{
                 if(itemService.findById(vinyl_id).isPresent()){
-                    itemService.delete((itemService.findById(vinyl_id).get()));
+                    Item item = itemService.findById(vinyl_id).get();
+                    itemService.delete(item);
                     json.put("Message", "Item Deleted!");
                     return new ResponseEntity<>(json.toString(), HttpStatus.NO_CONTENT);
                 }

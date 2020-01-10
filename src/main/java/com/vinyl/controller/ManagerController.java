@@ -43,16 +43,22 @@ public class ManagerController {
     private JwtTokenUtil jwtTokenUtil;
 
     @ApiOperation(value = "Add vinyl to store", response = Iterable.class)
-    @PostMapping(value = "/vinylsAdd")
-    public ResponseEntity<?> addVinyl(@RequestHeader("Authorization") String auth, @RequestBody Item vinyl){
+    @PostMapping(value = "/vinylsAdd", produces = "application/json")
+    public ResponseEntity<?> addVinyl(@RequestHeader("Authorization") String auth, @RequestBody Item vinyl) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         Item item = new Item();
+        JSONObject json = new JSONObject();
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
             try {
-                if (vinyl.getQuantity() <= 0)
-                    return new ResponseEntity<>("Quantity can't be negative!", HttpStatus.FORBIDDEN);
-                else if(vinyl.getPrice() <= 0)
-                    return new ResponseEntity<>("Price can't be negative!", HttpStatus.FORBIDDEN);
+                if (vinyl.getQuantity() <= 0){
+                    json.put("Message", "Quantity can't be negative!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                }
+                else if(vinyl.getPrice() <= 0){
+                    json.put("Message", "Price can't be negative!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                }
+
                 else if(itemService.findByName(vinyl.getName()) == null){
                     item.setQuantity(vinyl.getQuantity());
                     item.setDescription(vinyl.getDescription());
@@ -60,31 +66,52 @@ public class ManagerController {
                     item.setPrice(vinyl.getPrice());
                     itemService.save(item);
 
-                    return ResponseEntity.ok("Item inserted!");
+                    json.put("Message", "Item inserted!");
+                    return ResponseEntity.ok(json.toString());
                 }
-                else return new ResponseEntity<>("Item already exists!", HttpStatus.FORBIDDEN);
+                else{
+                    json.put("Message", "Item already exists!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                }
             }
-            catch (NullPointerException e){
-                return new ResponseEntity<>("Quantity can't be null!", HttpStatus.FORBIDDEN);
+            catch (NullPointerException | JSONException e){
+                json.put("Message", "Quantity can't be null!");
+                return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
             }
         }
-        else return new ResponseEntity<>("You are not a manager!", HttpStatus.FORBIDDEN);
+        else{
+            json.put("Message", "You are not a manager!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+        }
     }
 
     @ApiOperation(value = "Delete vinyl from store", response = Iterable.class)
     @DeleteMapping(value = "/vinyls/{vinyl_id}")
-    public @ResponseBody ResponseEntity<?> deleteVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id) {
+    public @ResponseBody ResponseEntity<?> deleteVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+        JSONObject json = new JSONObject();
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
-            if(itemService.findById(vinyl_id) != null){
-                itemService.delete(itemService.findById(vinyl_id));
-                return new ResponseEntity<>("Item Deleted!", HttpStatus.NO_CONTENT);
+            try{
+                if(itemService.findById(vinyl_id).isPresent()){
+                    itemService.delete((itemService.findById(vinyl_id).get()));
+                    json.put("Message", "Item Deleted!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.NO_CONTENT);
+                }
+                else{
+                    json.put("Message", "Item does not exist!");
+                    return new ResponseEntity<>(json.toString(), HttpStatus.NOT_FOUND);
+                }
             }
-            else{
-                return new ResponseEntity<>("Item does not exist!", HttpStatus.NOT_FOUND);
+            catch (NullPointerException e) {
+                json.put("Message", "Item does not exist!");
+                return new ResponseEntity<>(json.toString(), HttpStatus.NOT_FOUND);
             }
+
         }
-        else return new ResponseEntity<>("You are not a manager!", HttpStatus.FORBIDDEN);
+        else{
+            json.put("Message", "You are not a manager!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+        }
     }
 
     @ApiOperation(value = "Update vinyl", response = Iterable.class)

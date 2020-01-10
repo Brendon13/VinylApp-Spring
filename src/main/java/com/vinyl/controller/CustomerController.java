@@ -19,6 +19,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value="/VinylStore/api")
@@ -102,38 +103,41 @@ public class CustomerController {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         JSONObject json = new JSONObject();
             try {
-                Item item = itemService.findById(vinyl_id);
-                Cart cart = cartService.findByUserId(userService.findByEmailAddress(email).getId());
-                CartItem cartItem = new CartItem();
+                if (itemService.findById(vinyl_id).isPresent()){
+                    Optional<Item> optionalItem = itemService.findById(vinyl_id);
+                    Item item = optionalItem.get();
+                    Cart cart = cartService.findByUserId(userService.findByEmailAddress(email).getId());
+                    CartItem cartItem = new CartItem();
 
-                if (cartItemDTO.getQuantity() <= 0){
-                    json.put("Message ", "Quantity can't be negative or zero!");
-                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                    if (cartItemDTO.getQuantity() <= 0){
+                        json.put("Message ", "Quantity can't be negative or zero!");
+                        return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                    }
+                    else if (cartItemDTO.getQuantity() > item.getQuantity()) {
+                        json.put("Message ", "Quantity too big!");
+                        return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+                    } else {
+                        if(cartItemService.findByItemIdAndCartId(vinyl_id, cart.getId()).isPresent()){
+                            cartItem = cartItemService.findByItemIdAndCartId(vinyl_id, cart.getId()).get();
+                            json.put("Message ", "Item updated from cart!");
+                        }
+                        else {
+                            cartItem.setItem(item);
+                            cartItem.setCart(cart);
+                            json.put("Message ", "Item added to cart!");
+                        }
+                        cartItem.setQuantity(cartItemDTO.getQuantity());
+                        cartItemService.save(cartItem);
+                        return ResponseEntity.ok(json.toString());
+                    }
                 }
-                else if (cartItemDTO.getQuantity() > item.getQuantity()) {
-                    json.put("Message ", "Quantity too big!");
+                else{
+                    json.put("Message ", "Not a valid item ID!");
                     return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
-                } else {
-                    if(cartItemService.findByItemIdAndCartId(vinyl_id, cart.getId()).getId() != null){
-                        cartItem = cartItemService.findByItemIdAndCartId(vinyl_id, cart.getId());
-                        json.put("Message ", "Item updated from cart!");
-                    }
-                    else {
-                        cartItem.setItem(item);
-                        cartItem.setCart(cart);
-                        json.put("Message ", "Item added to cart!");
-                    }
-                    cartItem.setQuantity(cartItemDTO.getQuantity());
-                    cartItemService.save(cartItem);
-                    return ResponseEntity.ok(json.toString());
                 }
             }
-            catch (NullPointerException | JSONException e){
+            catch (JSONException e){
                 json.put("Message ", "Quantity can't be null!");
-                return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
-            }
-            catch (EntityNotFoundException e){
-                json.put("Message ", "Not a valid item ID!");
                 return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
             }
     }

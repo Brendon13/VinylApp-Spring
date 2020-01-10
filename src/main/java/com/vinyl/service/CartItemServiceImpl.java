@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CartItemServiceImpl implements CartItemService {
@@ -24,13 +25,13 @@ public class CartItemServiceImpl implements CartItemService {
     }
 
     @Override
-    public CartItem findByItemIdAndCartId(Long itemId, Long cartId){
+    public Optional<CartItem> findByItemIdAndCartId(Long itemId, Long cartId){
         List<CartItem> cartItem = cartItemRepository.findByCartId(cartId);
         final CartItem[] cartItemToReturn = {new CartItem()};
         cartItem.forEach(cItem -> {
             cartItemToReturn[0] = cartItemRepository.findByItemId(itemId);
         });
-        return cartItemToReturn[0];
+        return Optional.ofNullable(cartItemToReturn[0]);
     }
 
     @Override

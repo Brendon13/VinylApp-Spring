@@ -44,9 +44,9 @@ public class ItemServiceTest {
         item.setQuantity(20L);
         item.setPrice(100D);
 
-        Mockito.when(mockItemService.findById(1L)).thenReturn(item);
+        Mockito.when(mockItemService.findById(1L)).thenReturn(java.util.Optional.of(item));
 
-        Item testItem = mockItemService.findById(1L);
+        Item testItem = mockItemService.findById(1L).get();
 
         Assert.assertEquals(item, testItem);
         verify(mockItemService).findById(1L);

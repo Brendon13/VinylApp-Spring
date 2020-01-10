@@ -25,7 +25,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.util.*;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.times;
@@ -131,8 +131,10 @@ public class AddVinylToCartTest {
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
         when(cartService.findByUserId(111L)).thenReturn(cart);
-        when(itemService.findById(1L)).thenReturn(item);
+        when(itemService.findById(1L)).thenReturn(Optional.of(item));
+        assertTrue(itemService.findById(1L).isPresent());
         when(cartItemService.findByCartId(1L)).thenReturn(cartItemList);
+       // when(cartItemService.findByItemIdAndCartId(1L, cart.getId()).getId()).thenReturn(1L);
 
 
         doNothing().when(cartItemService).save(isA(CartItem.class));
@@ -188,7 +190,7 @@ public class AddVinylToCartTest {
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
         when(cartService.findByUserId(111L)).thenReturn(cart);
-        when(itemService.findById(1L)).thenReturn(item);
+        when(itemService.findById(1L).get()).thenReturn(item);
         when(cartItemService.findByCartId(1L)).thenReturn(cartItemList);
 
 
@@ -244,7 +246,7 @@ public class AddVinylToCartTest {
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
         when(cartService.findByUserId(111L)).thenReturn(cart);
-        when(itemService.findById(1L)).thenReturn(item);
+        when(itemService.findById(1L).get()).thenReturn(item);
         when(cartItemService.findByCartId(1L)).thenReturn(cartItemList);
 
 
@@ -299,7 +301,7 @@ public class AddVinylToCartTest {
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
         when(cartService.findByUserId(111L)).thenReturn(cart);
-        when(itemService.findById(1L)).thenReturn(item);
+        when(itemService.findById(1L)).thenReturn(Optional.of(item));
         when(cartItemService.findByCartId(1L)).thenReturn(cartItemList);
 
 

@@ -128,7 +128,8 @@ public class UpdateVinylTest {
 
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
-        when(itemService.findById(1L)).thenReturn(item);
+
+        when(itemService.findById(1L)).thenReturn(java.util.Optional.of(item));
 
         doNothing().when(itemService).save(isA(Item.class));
         itemService.save(item);

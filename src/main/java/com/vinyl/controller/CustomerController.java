@@ -242,6 +242,7 @@ public class CustomerController {
             json2.put("Id", orders.get(i).getId());
             json2.put("Cost", orders.get(i).getTotal_price());
             json2.put("OrderDate", orders.get(i).getCreatedAt());
+            json2.put("UpdateDate", orders.get(i).getUpdatedAt());
             json2.put("Status", orders.get(i).getStatus().getStatus());
             json3.put(json2);
         }

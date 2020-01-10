@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a6ebc16-1575-44d2-8e0e-6e631aae8654" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/model/StatusDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vinyl/controller/ManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinyl/controller/ManagerController.class" afterDir="false" />
@@ -221,10 +222,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="795" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1576502419132" />
-    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1578657306584">
+    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1578660200244">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1578657306584" />
+    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1578660200244" />
     <state x="705" y="284" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576135220231">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -245,22 +246,22 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1578294376092" />
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1578659049008">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1578660906417">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578659049008" />
-    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1578659049008">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578660906417" />
+    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1578660906417">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578659049008" />
-    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1578659049008">
+    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578660906417" />
+    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1578660906417">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578659049008" />
-    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1578659049008">
+    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578660906417" />
+    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1578660906417">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578659049008" />
+    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578660906417" />
     <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1578656598512">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

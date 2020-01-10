@@ -159,15 +159,15 @@ public class ManagerController {
 
     @ApiOperation(value = "Update order", response = Iterable.class)
     @PutMapping(value = "/orders/{order_id}")
-    public @ResponseBody ResponseEntity<?> updateOrder(@RequestHeader("Authorization") String auth, @RequestParam Long status, @PathVariable Long order_id){
+    public @ResponseBody ResponseEntity<?> updateOrder(@RequestHeader("Authorization") String auth, @RequestBody StatusDTO status, @PathVariable Long order_id){
         Order order;
         Date date = new Date();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
             if(orderService.findById(order_id) != null){
-                if(status == 1 || status == 2){
+                if(status.getId() == 1 || status.getId() == 2){
                     order = orderService.findById(order_id);
-                    order.setStatus(statusService.findById(status));
+                    order.setStatus(statusService.findById(status.getId()));
                     order.setUpdatedAt(date);
                     orderService.save(order);
 
@@ -181,33 +181,35 @@ public class ManagerController {
     }
 
     @ApiOperation(value = "Get all customers", response = Iterable.class)
-    @GetMapping(value = "/customers")
+    @GetMapping(value = "/customers", produces = "application/json")
     public ResponseEntity<?> getCustomers(@RequestHeader("Authorization") String auth) throws JSONException{
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
-
+        JSONObject json = new JSONObject();
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
             UserRole userRole = new UserRole(1L,"customer");
             List<User> users = userService.findByUserRole(userRole);
 
-            JSONObject json = new JSONObject();
+            //JSONObject json = new JSONObject();
             JSONArray json3 = new JSONArray();
 
             for(int i = 0; i< (long) users.size(); i++){
                 JSONObject json2 = new JSONObject();
                 json2.put("Email", users.get(i).getEmailAddress());
-                json2.put("First Name", users.get(i).getFirstName());
-                json2.put("Last Name", users.get(i).getLastName());
+                json2.put("FirstName", users.get(i).getFirstName());
+                json2.put("LastName", users.get(i).getLastName());
                 json3.put(json2);
             }
 
-            json.put("Customers", json3);
-
-            return new ResponseEntity<>(json.toString(), HttpStatus.OK);
+            //json.put("Customers", json3);
+            return new ResponseEntity<>(json3.toString(), HttpStatus.OK);//json.toString() for default req format
         }
-        else return new ResponseEntity<>("You are not a manager!", HttpStatus.FORBIDDEN);
+        else {
+            json.put("Message", "You are not a manager!");
+            return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
+        }
     }
 
-    @ApiOperation(value = "Get order from an user", response = Iterable.class)
+    @ApiOperation(value = "Get orders from an user", response = Iterable.class)
     @GetMapping(value = "/users/{user_id}/orders")
     public ResponseEntity<?> getUserOrder(@RequestHeader("Authorization") String auth, @PathVariable Long user_id) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));

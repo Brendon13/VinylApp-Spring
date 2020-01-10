@@ -134,7 +134,7 @@ public class AddVinylToCartTest {
         when(itemService.findById(1L)).thenReturn(Optional.of(item));
         assertTrue(itemService.findById(1L).isPresent());
         when(cartItemService.findByCartId(1L)).thenReturn(cartItemList);
-       // when(cartItemService.findByItemIdAndCartId(1L, cart.getId()).getId()).thenReturn(1L);
+        assertFalse(cartItemService.findByItemIdAndCartId(1L, 1L).isPresent());
 
 
         doNothing().when(cartItemService).save(isA(CartItem.class));
@@ -142,7 +142,9 @@ public class AddVinylToCartTest {
 
         verify(cartItemService, times(1)).save(cartItem);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/cart/{vinyl_id}", "1").header("Authorization", auth).param("quantity", "1")).andDo(print()).andExpect(status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/cart/{vinyl_id}", "1").header("Authorization", auth).content("{\"quantity\":\"" + 1 + "\"}")
+                .contentType("application/json")
+                .characterEncoding("utf-8")).andDo(print()).andExpect(status().isOk());
 
     }
 
@@ -190,8 +192,10 @@ public class AddVinylToCartTest {
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
         when(cartService.findByUserId(111L)).thenReturn(cart);
-        when(itemService.findById(1L).get()).thenReturn(item);
+        when(itemService.findById(1L)).thenReturn(Optional.of(item));
+        assertTrue(itemService.findById(1L).isPresent());
         when(cartItemService.findByCartId(1L)).thenReturn(cartItemList);
+        assertFalse(cartItemService.findByItemIdAndCartId(1L, 1L).isPresent());
 
 
         doNothing().when(cartItemService).save(isA(CartItem.class));
@@ -199,7 +203,9 @@ public class AddVinylToCartTest {
 
         verify(cartItemService, times(1)).save(cartItem);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/cart/{vinyl_id}", "1").header("Authorization", auth).param("quantity", "100")).andDo(print()).andExpect(status().isForbidden());
+        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/cart/{vinyl_id}", "1").header("Authorization", auth).content("{\"quantity\":\"" + 100 + "\"}")
+                .contentType("application/json")
+                .characterEncoding("utf-8")).andDo(print()).andExpect(status().isForbidden());
 
     }
 
@@ -246,8 +252,10 @@ public class AddVinylToCartTest {
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
         when(cartService.findByUserId(111L)).thenReturn(cart);
-        when(itemService.findById(1L).get()).thenReturn(item);
+        when(itemService.findById(1L)).thenReturn(Optional.of(item));
+        assertTrue(itemService.findById(1L).isPresent());
         when(cartItemService.findByCartId(1L)).thenReturn(cartItemList);
+        assertFalse(cartItemService.findByItemIdAndCartId(1L, 1L).isPresent());
 
 
         doNothing().when(cartItemService).save(isA(CartItem.class));
@@ -255,7 +263,9 @@ public class AddVinylToCartTest {
 
         verify(cartItemService, times(1)).save(cartItem);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/cart/{vinyl_id}", "1").header("Authorization", auth).param("quantity", "0")).andDo(print()).andExpect(status().isForbidden());
+        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/cart/{vinyl_id}", "1").header("Authorization", auth).content("{\"quantity\":\"" + 0 + "\"}")
+                .contentType("application/json")
+                .characterEncoding("utf-8")).andDo(print()).andExpect(status().isForbidden());
 
     }
     @Test
@@ -302,7 +312,9 @@ public class AddVinylToCartTest {
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
         when(cartService.findByUserId(111L)).thenReturn(cart);
         when(itemService.findById(1L)).thenReturn(Optional.of(item));
+        assertTrue(itemService.findById(1L).isPresent());
         when(cartItemService.findByCartId(1L)).thenReturn(cartItemList);
+        assertFalse(cartItemService.findByItemIdAndCartId(1L, 1L).isPresent());
 
 
         doNothing().when(cartItemService).save(isA(CartItem.class));
@@ -310,7 +322,9 @@ public class AddVinylToCartTest {
 
         verify(cartItemService, times(1)).save(cartItem);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/cart/{vinyl_id}", "1").header("Authorization", auth).param("quantity", "-10")).andDo(print()).andExpect(status().isForbidden());
+        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/cart/{vinyl_id}", "1").header("Authorization", auth).content("{\"quantity\":\"" + -1 + "\"}")
+                .contentType("application/json")
+                .characterEncoding("utf-8")).andDo(print()).andExpect(status().isForbidden());
 
     }
 }

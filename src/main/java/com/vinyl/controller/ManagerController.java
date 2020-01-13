@@ -165,9 +165,9 @@ public class ManagerController {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         JSONObject json = new JSONObject();
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
-            if(orderService.findById(order_id) != null){
+            if(orderService.findById(order_id).isPresent()){
                 if(status.getId() == 1 || status.getId() == 2){
-                    order = orderService.findById(order_id);
+                    order = orderService.findById(order_id).get();
                     order.setStatus(statusService.findById(status.getId()));
                     order.setUpdatedAt(date);
                     orderService.save(order);
@@ -244,7 +244,7 @@ public class ManagerController {
 
                         json.put("Orders", json3);
 
-                        return new ResponseEntity<>(json.toString(), HttpStatus.OK);
+                        return new ResponseEntity<>(json3.toString(), HttpStatus.OK); //json.toString() for req display
                     }
             } else return new ResponseEntity<>("You are not a manager!", HttpStatus.FORBIDDEN);
 

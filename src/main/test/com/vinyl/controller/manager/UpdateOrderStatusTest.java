@@ -135,7 +135,7 @@ public class UpdateOrderStatusTest {
 
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
-        when(orderService.findById(1L)).thenReturn(order);
+        when(orderService.findById(1L)).thenReturn(java.util.Optional.of(order));
         when(statusService.findById(2L)).thenReturn(status2);
 
         doNothing().when(orderService).save(isA(Order.class));
@@ -192,7 +192,7 @@ public class UpdateOrderStatusTest {
 
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
-        when(orderService.findById(1L)).thenReturn(order);
+        when(orderService.findById(1L)).thenReturn(java.util.Optional.of(order));
         when(statusService.findById(2L)).thenReturn(status2);
 
         doNothing().when(orderService).save(isA(Order.class));
@@ -290,7 +290,7 @@ public class UpdateOrderStatusTest {
 
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
-        when(orderService.findById(1L)).thenReturn(order);
+        when(orderService.findById(1L)).thenReturn(java.util.Optional.of(order));
         when(statusService.findById(2L)).thenReturn(status2);
 
         doNothing().when(orderService).save(isA(Order.class));

@@ -83,9 +83,9 @@ public class OrderServiceTest {
         order.setUpdatedAt(date);
 
 
-        Mockito.when(mockOrderService.findById(1L)).thenReturn(order);
+        Mockito.when(mockOrderService.findById(1L)).thenReturn(java.util.Optional.of(order));
 
-        Order testOrder = mockOrderService.findById(1L);
+        Order testOrder = mockOrderService.findById(1L).get();
 
         Assert.assertEquals(order, testOrder);
         verify(mockOrderService).findById(1L);

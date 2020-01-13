@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9a6ebc16-1575-44d2-8e0e-6e631aae8654" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/service/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/service/OrderServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +82,7 @@
       <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\resources\vinylApp" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.VinylApplication">
+  <component name="RunManager" selected="JUnit.OrderServiceTest">
     <configuration name="VinylApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vinyl.VinylApplication" />
       <module name="VinylStore" />
@@ -109,23 +111,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AddVinylToCartTest.addVinylToCartTestWithQuantityOK" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VinylStore" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.vinyl.controller.customer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.vinyl.controller.customer" />
-      <option name="MAIN_CLASS_NAME" value="com.vinyl.controller.customer.AddVinylToCartTest" />
-      <option name="METHOD_NAME" value="addVinylToCartTestWithQuantityOK" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ItemServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VinylStore" />
       <extension name="coverage">
         <pattern>
@@ -134,7 +120,22 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.vinyl.service" />
-      <option name="MAIN_CLASS_NAME" value="com.vinyl.service.ItemServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="com.vinyl.service.OrderServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UpdateOrderStatusTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VinylStore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vinyl.controller.manager.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vinyl.controller.manager" />
+      <option name="MAIN_CLASS_NAME" value="com.vinyl.controller.manager.UpdateOrderStatusTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -157,11 +158,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.OrderServiceTest" />
         <item itemvalue="Application.VinylApplication" />
-        <item itemvalue="JUnit.AddVinylToCartTest" />
-        <item itemvalue="JUnit.AddVinylToCartTest.addVinylToCartTestWithQuantityOK" />
-        <item itemvalue="JUnit.ItemServiceTest" />
         <item itemvalue="JUnit.UpdateVinylTest" />
+        <item itemvalue="JUnit.UpdateOrderStatusTest" />
+        <item itemvalue="JUnit.AddVinylToCartTest" />
       </list>
     </recent_temporary>
   </component>
@@ -248,22 +249,22 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1578294376092" />
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1578671506363">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1578901914375">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578671506363" />
-    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1578671506363">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578901914375" />
+    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1578901914375">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578671506363" />
-    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1578671506363">
+    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578901914375" />
+    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1578901914375">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578671506363" />
-    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1578671506363">
+    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578901914375" />
+    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1578901914375">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578671506363" />
+    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578901914375" />
     <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1578671506359">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -292,10 +293,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="93" y="93" width="1862" height="926" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1576847077992" />
-    <state x="721" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578639828397">
+    <state x="721" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1578898877931">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="721" y="380" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1578639828397" />
+    <state x="721" y="380" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1578898877931" />
     <state x="767" y="185" key="refactoring.ChangeSignatureDialog" timestamp="1578642698823">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

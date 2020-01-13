@@ -4,8 +4,6 @@
     <list default="true" id="9a6ebc16-1575-44d2-8e0e-6e631aae8654" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/service/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/service/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/service/OrderServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +80,7 @@
       <recent name="D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\resources\vinylApp" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrderServiceTest">
+  <component name="RunManager" selected="Application.VinylApplication">
     <configuration name="VinylApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.vinyl.VinylApplication" />
       <module name="VinylStore" />
@@ -158,8 +156,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OrderServiceTest" />
         <item itemvalue="Application.VinylApplication" />
+        <item itemvalue="JUnit.OrderServiceTest" />
         <item itemvalue="JUnit.UpdateVinylTest" />
         <item itemvalue="JUnit.UpdateOrderStatusTest" />
         <item itemvalue="JUnit.AddVinylToCartTest" />
@@ -249,22 +247,22 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1578294376092" />
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1578901914375">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1578923291003">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578901914375" />
-    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1578901914375">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1578923291003" />
+    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1578923291003">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578901914375" />
-    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1578901914375">
+    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1578923291003" />
+    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1578923291003">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578901914375" />
-    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1578901914375">
+    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1578923291003" />
+    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1578923291003">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578901914375" />
+    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1578923291003" />
     <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1578671506359">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

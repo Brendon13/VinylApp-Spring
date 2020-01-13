@@ -205,6 +205,7 @@ public class ManagerController {
 
             for(int i = 0; i< (long) users.size(); i++){
                 JSONObject json2 = new JSONObject();
+                json2.put("Id", users.get(i).getId());
                 json2.put("Email", users.get(i).getEmailAddress());
                 json2.put("FirstName", users.get(i).getFirstName());
                 json2.put("LastName", users.get(i).getLastName());
@@ -221,12 +222,14 @@ public class ManagerController {
     }
 
     @ApiOperation(value = "Get orders from an user", response = Iterable.class)
-    @GetMapping(value = "/users/{user_id}/orders")
+    @GetMapping(value = "/users/{user_id}/orders", produces = "application/json")
     public ResponseEntity<?> getUserOrder(@RequestHeader("Authorization") String auth, @PathVariable Long user_id) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+        JSONObject jsonError = new JSONObject();
             if (userService.findByEmailAddress(email).getUserRole().getId() == 2) {
                     if (userService.findById(user_id) == null) {
-                        return new ResponseEntity<>("User id doesn't exist!", HttpStatus.BAD_REQUEST);
+                        jsonError.put("Message", "User id doesn't exist!");
+                        return new ResponseEntity<>(jsonError.toString(), HttpStatus.BAD_REQUEST);
                     } else {
 
                         List<Order> orders = orderService.findByUserId(user_id);
@@ -237,7 +240,8 @@ public class ManagerController {
                             JSONObject json2 = new JSONObject();
                             json2.put("Id", orders.get(i).getId());
                             json2.put("Cost", orders.get(i).getTotal_price());
-                            json2.put("Order Date", orders.get(i).getCreatedAt());
+                            json2.put("OrderDate", orders.get(i).getCreatedAt());
+                            json2.put("UpdateDate", orders.get(i).getUpdatedAt());
                             json2.put("Status", orders.get(i).getStatus().getStatus());
                             json3.put(json2);
                         }
@@ -246,7 +250,10 @@ public class ManagerController {
 
                         return new ResponseEntity<>(json3.toString(), HttpStatus.OK); //json.toString() for req display
                     }
-            } else return new ResponseEntity<>("You are not a manager!", HttpStatus.FORBIDDEN);
+            } else{
+                jsonError.put("Message", "You are not a manager!");
+                return new ResponseEntity<>(jsonError.toString(), HttpStatus.FORBIDDEN);
+            }
 
     }
 }

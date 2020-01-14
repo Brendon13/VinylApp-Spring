@@ -147,7 +147,7 @@ public class CustomerController {
     public @ResponseBody ResponseEntity<?> removeVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long item_id) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         JSONObject json = new JSONObject();
-        final List<Boolean> noItems = new ArrayList<>();
+        final Boolean[] noItems = {null};
 
         Cart cart = cartService.findByUserId(userService.findByEmailAddress(email).getId());
         List<CartItem> cartItem = cartItemService.findByCartId(cart.getId());
@@ -155,11 +155,13 @@ public class CustomerController {
         if(!cartItem.isEmpty()) {
             if (userService.findByEmailAddress(email).getId().equals(userService.findByEmailAddress(email).getId())) {
                 cartItem.forEach(cItem -> {
-                    if (cartItemService.findByItemId(item_id) == null)
-                        noItems.add(true);
-                    else cartItemService.delete(cItem);
+                    if (cItem.getItem().getId().equals(item_id)){
+                        cartItemService.delete(cItem);
+                        noItems[0] = false;
+                    }
+                    else noItems[0] = true;
                 });
-                if (noItems.contains(true)){
+                if (noItems[0]){
                     json.put("Message ", "No items with that ID in cart!");
                     return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
                 }

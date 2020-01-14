@@ -256,4 +256,34 @@ public class ManagerController {
             }
 
     }
+
+    @ApiOperation(value = "Retrieve vinyl", response = Iterable.class)
+    @GetMapping(value = "/vinyls/{vinyl_id}", produces = "application/json")
+    public ResponseEntity<?> getVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id) throws JSONException{
+        JSONObject jsonErr = new JSONObject();
+        JSONObject json = new JSONObject();
+        String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+
+        if(userService.findByEmailAddress(email) != null && userService.findById(userService.findByEmailAddress(email).getId()) != null) {
+            if(itemService.findById(vinyl_id).isPresent()){
+                Item item = itemService.findById(vinyl_id).get();
+                json.put("Id", item.getId());
+                json.put("Name", item.getName());
+                json.put("Description", item.getDescription());
+                json.put("Price", item.getPrice());
+                json.put("Quantity", item.getQuantity());
+
+                return new ResponseEntity<>(json.toString(), HttpStatus.OK);
+            }
+            else
+            {
+                jsonErr.put("Message ", "Not a valid id!");
+                return new ResponseEntity<>(jsonErr.toString(), HttpStatus.FORBIDDEN);
+            }
+        }
+        else{
+            jsonErr.put("Message ", "You are not logged in!");
+            return new ResponseEntity<>(jsonErr.toString(), HttpStatus.FORBIDDEN);
+        }
+    }
 }

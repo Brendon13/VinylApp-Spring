@@ -1,5 +1,6 @@
 package com.vinyl.controller.manager;
 
+import com.google.gson.JsonObject;
 import com.vinyl.config.JwtAuthenticationEntryPoint;
 import com.vinyl.config.JwtRequestFilter;
 import com.vinyl.config.JwtTokenUtil;
@@ -9,6 +10,7 @@ import com.vinyl.repository.UserRepository;
 import com.vinyl.service.*;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -93,6 +95,7 @@ public class UpdateOrderStatusTest {
     @Test
     public void updateOrderStatusTestWithParamsOK() throws Exception {
         final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+        JSONObject json = new JSONObject();
 
         User user = new User();
         user.setId(111L);
@@ -143,13 +146,20 @@ public class UpdateOrderStatusTest {
 
         verify(orderService, times(1)).save(order);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/orders/{order_id}", "1").param("status", "2")
-                .header("Authorization", auth)).andDo(print()).andExpect(status().isOk());
+        json.put("id", 1);
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/orders/{order_id}", "1")
+                .header("Authorization", auth)
+                .contentType("application/json")
+                .characterEncoding("utf-8")
+                .content(json.toString()))
+                .andDo(print()).andExpect(status().isOk());
     }
 
     @Test
     public void updateOrderStatusTestWithNotValidStatusId() throws Exception {
         final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+        JSONObject json = new JSONObject();
 
         User user = new User();
         user.setId(111L);
@@ -200,54 +210,20 @@ public class UpdateOrderStatusTest {
 
         verify(orderService, times(1)).save(order);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/orders/{order_id}", "1").param("status", "0")
-                .header("Authorization", auth)).andDo(print()).andExpect(status().isForbidden());
-    }
+        json.put("id", 3);
 
-    @Test
-    public void updateOrderStatusTestWithOrderNotExist() throws Exception {
-        final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
-
-        User user = new User();
-        user.setId(111L);
-        user.setFirstName("Customer");
-        user.setLastName("User");
-        user.setEmailAddress("kovacs.brendon@gmail.com");
-        when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
-        user.setPassword(bCryptPasswordEncoder.encode("123456"));
-        user.setUserRole(new UserRole(2L, "manager"));
-
-        final User user1 = new User();
-        user1.setFirstName("User");
-        user1.setLastName("User");
-        user1.setEmailAddress("user.user1@gmail.com");
-        when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
-        user1.setPassword(bCryptPasswordEncoder.encode("123456"));
-        user1.setUserRole(new UserRole(1L, "customer"));
-
-        final Status status = new Status(2L,"delivered");
-
-        Map<String, Object> claims = new HashMap<>();
-        String tokenString = Jwts.builder().setClaims(claims).setSubject("kovacs.brendon@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-                .signWith(SignatureAlgorithm.HS512, "vinylapp").compact();
-
-        assertNotNull(tokenString);
-
-        String auth = "Bearer " + tokenString;
-
-        when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
-        when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
-        when(orderService.findById(1L)).thenReturn(null);
-        when(statusService.findById(2L)).thenReturn(status);
-
-        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/orders/{order_id}", "1").param("status", "2")
-                .header("Authorization", auth)).andDo(print()).andExpect(status().isNotFound());
+        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/orders/{order_id}", "1")
+                .header("Authorization", auth)
+                .contentType("application/json")
+                .characterEncoding("utf-8")
+                .content(json.toString()))
+                .andDo(print()).andExpect(status().isForbidden());
     }
 
     @Test
     public void updateOrderStatusTestWithParamsOkButNotManager() throws Exception {
         final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+        JSONObject json = new JSONObject();
 
         User user = new User();
         user.setId(111L);
@@ -298,8 +274,14 @@ public class UpdateOrderStatusTest {
 
         verify(orderService, times(1)).save(order);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/orders/{order_id}", "1").param("status", "2")
-                .header("Authorization", auth)).andDo(print()).andExpect(status().isForbidden());
+        json.put("id", 1);
+
+        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/orders/{order_id}", "1")
+                .header("Authorization", auth)
+                .contentType("application/json")
+                .characterEncoding("utf-8")
+                .content(json.toString()))
+                .andDo(print()).andExpect(status().isForbidden());
     }
 
 }

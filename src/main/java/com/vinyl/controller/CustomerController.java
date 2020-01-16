@@ -155,21 +155,12 @@ public class CustomerController {
         if(!cartItem.isEmpty()) {
             if (userService.findByEmailAddress(email).getId().equals(userService.findByEmailAddress(email).getId())) {
                 cartItem.forEach(cItem -> {
-                    if (cItem.getItem().getId().equals(item_id)){
-                        cartItemService.delete(cItem);
-                        noItems[0] = false;
-                    }
-                    else noItems[0] = true;
+                    if (cItem.getItem().getId().equals(item_id)) cartItemService.delete(cItem);
                 });
-                if (noItems[0]){
-                    json.put("Message ", "No items with that ID in cart!");
-                    return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
-                }
-                else{
-                    json.put("Message ", "Item deleted from cart!");
-                    return ResponseEntity.ok(json.toString());
-                }
-            } else{
+                json.put("Message ", "Item deleted from cart!");
+                return ResponseEntity.ok(json.toString());
+            }
+            else{
                 json.put("Message ", "You are not logged in");
                 return new ResponseEntity<>(json.toString(), HttpStatus.FORBIDDEN);
             }

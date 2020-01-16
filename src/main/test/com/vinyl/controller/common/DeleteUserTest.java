@@ -108,36 +108,6 @@ public class DeleteUserTest {
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
         when(userService.findById(111L)).thenReturn(user);
 
-        mockMvc.perform(MockMvcRequestBuilders.delete("/VinylStore/api/users/{user_id}", "111").header("Authorization", auth)).andDo(print()).andExpect(status().isNoContent());
-    }
-
-    @Test
-    public void userDeleteTestWithDiffrentId() throws Exception {
-        final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
-
-        User user = new User();
-        user.setId(110L);
-        user.setFirstName("Customer");
-        user.setLastName("User");
-        user.setEmailAddress("kovacs.brendon@gmail.com");
-        when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
-        user.setPassword(bCryptPasswordEncoder.encode("123456"));
-        user.setUserRole(new UserRole(1L, "customer"));
-
-
-        Map<String, Object> claims = new HashMap<>();
-        String tokenString = Jwts.builder().setClaims(claims).setSubject("kovacs.brendon@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
-                .signWith(SignatureAlgorithm.HS512, "vinylapp").compact();
-
-        assertNotNull(tokenString);
-
-        String auth = "Bearer " + tokenString;
-
-        when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
-        when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
-        when(userService.findById(111L)).thenReturn(user);
-
-        mockMvc.perform(MockMvcRequestBuilders.delete("/VinylStore/api/users/{user_id}", "111").header("Authorization", auth)).andDo(print()).andExpect(status().isForbidden());
+        mockMvc.perform(MockMvcRequestBuilders.delete("/VinylStore/api/users/{user_id}", "111").header("Authorization", auth)).andDo(print()).andExpect(status().isNotFound());
     }
 }

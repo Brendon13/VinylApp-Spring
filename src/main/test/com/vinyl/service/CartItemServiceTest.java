@@ -10,7 +10,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.isA;
 import static org.mockito.Mockito.*;
@@ -64,6 +66,40 @@ public class CartItemServiceTest {
 
         Assert.assertEquals(cartItemList, testCartItemList);
         verify(mockCartItemService).findByCartId(1L);
+    }
+
+    @Test
+    public void findByItemIdAndCartId(){
+        final Item item = new Item();
+        item.setId(1L);
+        item.setName("Lorem");
+        item.setDescription("Lorem Ipsum");
+        item.setQuantity(20L);
+        item.setPrice(100D);
+
+        final User user = new User();
+        user.setFirstName("User");
+        user.setLastName("User");
+        user.setEmailAddress("user.user1@gmail.com");
+        when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
+        user.setPassword(bCryptPasswordEncoder.encode("123456"));
+
+        final Cart cart = new Cart();
+        cart.setUser(user);
+        cart.setId(1L);
+
+        final CartItem cartItem = new CartItem();
+        cartItem.setCart(cart);
+        cartItem.setItem(item);
+        cartItem.setQuantity(2L);
+
+
+        Mockito.when(mockCartItemService.findByItemIdAndCartId(1L, 1L)).thenReturn(Optional.of(cartItem));
+
+        Optional<CartItem> testCartItem = mockCartItemService.findByItemIdAndCartId(1L, 1L);
+
+        Assert.assertEquals(Optional.of(cartItem), testCartItem);
+        verify(mockCartItemService).findByItemIdAndCartId(1L,1L);
     }
 
     @Test

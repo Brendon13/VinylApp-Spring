@@ -175,7 +175,7 @@ public class CartDetailsTest {
         when(cartService.findByUserId(111L)).thenReturn(cart);
         when(cartItemService.findByCartId(1L)).thenReturn(cartItemList);
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/VinylStore/api/customer/cart/detail").header("Authorization", auth)).andDo(print()).andExpect(status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.get("/VinylStore/api/customer/cart/detail").header("Authorization", auth)).andDo(print()).andExpect(status().isNotFound());
 
     }
 

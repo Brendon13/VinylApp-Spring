@@ -12,6 +12,7 @@ import com.vinyl.repository.UserRepository;
 import com.vinyl.service.*;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +30,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.isA;
@@ -107,7 +109,6 @@ public class UpdateVinylTest {
         user.setUserRole(new UserRole(2L, "manager"));
 
         final Item item = new Item();
-        item.setId(1L);
         item.setName("Lorem");
         item.setDescription("Lorem Ipsum");
         item.setQuantity(20L);
@@ -129,14 +130,14 @@ public class UpdateVinylTest {
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
 
-        when(itemService.findById(1L)).thenReturn(java.util.Optional.of(item));
+        when(itemService.findById(1L)).thenReturn(Optional.of(item));
 
         doNothing().when(itemService).save(isA(Item.class));
         itemService.save(item);
 
         verify(itemService, times(1)).save(item);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/{vinyl_id}", "1")
+        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/update/{vinyl_id}", "1")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")
@@ -157,7 +158,6 @@ public class UpdateVinylTest {
         user.setUserRole(new UserRole(2L, "manager"));
 
         final Item item = new Item();
-        item.setId(1L);
         item.setName("Lorem");
         item.setDescription("Lorem Ipsum");
         item.setQuantity(20L);
@@ -180,7 +180,7 @@ public class UpdateVinylTest {
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
         when(itemService.findById(1L)).thenReturn(null);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/{vinyl_id}", "1")
+        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/update/{vinyl_id}", "1")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")
@@ -202,7 +202,6 @@ public class UpdateVinylTest {
         user.setUserRole(new UserRole(2L, "manager"));
 
         final Item item = new Item();
-        item.setId(1L);
         item.setName("Lorem");
         item.setDescription("Lorem Ipsum");
         item.setQuantity(-2L);
@@ -224,7 +223,7 @@ public class UpdateVinylTest {
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/{vinyl_id}", "1")
+        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/update/{vinyl_id}", "1")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")
@@ -246,7 +245,6 @@ public class UpdateVinylTest {
         user.setUserRole(new UserRole(2L, "manager"));
 
         final Item item = new Item();
-        item.setId(1L);
         item.setName("Lorem");
         item.setDescription("Lorem Ipsum");
         item.setQuantity(null);
@@ -268,7 +266,7 @@ public class UpdateVinylTest {
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/{vinyl_id}", "1")
+        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/update/{vinyl_id}", "1")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")
@@ -279,6 +277,7 @@ public class UpdateVinylTest {
     @Test
     public void updateVinylTestWithPriceNegative() throws Exception {
         final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+        JSONObject json = new JSONObject();
 
         User user = new User();
         user.setId(111L);
@@ -290,15 +289,15 @@ public class UpdateVinylTest {
         user.setUserRole(new UserRole(2L, "manager"));
 
         final Item item = new Item();
-        item.setId(1L);
         item.setName("Lorem");
         item.setDescription("Lorem Ipsum");
         item.setQuantity(20L);
         item.setPrice(-100D);
 
-        Gson gson = new Gson();
-        String json = gson.toJson(item);
-
+        json.put("Name", item.getName());
+        json.put("Description", item.getDescription());
+        json.put("Quantity", item.getQuantity());
+        json.put("Price", item.getPrice());
 
         Map<String, Object> claims = new HashMap<>();
         String tokenString = Jwts.builder().setClaims(claims).setSubject("kovacs.brendon@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
@@ -312,11 +311,11 @@ public class UpdateVinylTest {
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/{vinyl_id}", "1")
+        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/update/{vinyl_id}", "1")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")
-                .content(json)).andDo(print()).andExpect(status().isForbidden());
+                .content(json.toString())).andDo(print()).andExpect(status().isForbidden());
 
     }
 
@@ -334,7 +333,6 @@ public class UpdateVinylTest {
         user.setUserRole(new UserRole(1L, "customer"));
 
         final Item item = new Item();
-        item.setId(1L);
         item.setName("Lorem");
         item.setDescription("Lorem Ipsum");
         item.setQuantity(20L);
@@ -356,7 +354,7 @@ public class UpdateVinylTest {
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
         when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/{vinyl_id}", "1")
+        mockMvc.perform(MockMvcRequestBuilders.put("/VinylStore/api/vinyls/update/{vinyl_id}", "1")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")

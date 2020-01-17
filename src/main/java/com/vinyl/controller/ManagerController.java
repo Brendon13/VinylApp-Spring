@@ -16,13 +16,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping(value="/VinylStore/api")
-@Api(value="ManagerController", description="Manager operations for the Vinyl Store")
+@Api(value="ManagerController")
 public class ManagerController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -200,7 +199,6 @@ public class ManagerController {
             UserRole userRole = new UserRole(1L,"customer");
             List<User> users = userService.findByUserRole(userRole);
 
-            //JSONObject json = new JSONObject();
             JSONArray json3 = new JSONArray();
 
             for(int i = 0; i< (long) users.size(); i++){
@@ -212,8 +210,7 @@ public class ManagerController {
                 json3.put(json2);
             }
 
-            //json.put("Customers", json3);
-            return new ResponseEntity<>(json3.toString(), HttpStatus.OK);//json.toString() for default req format
+            return new ResponseEntity<>(json3.toString(), HttpStatus.OK);
         }
         else {
             json.put("Message", "You are not a manager!");
@@ -233,7 +230,6 @@ public class ManagerController {
                     } else {
 
                         List<Order> orders = orderService.findByUserId(user_id);
-                        JSONObject json = new JSONObject();
                         JSONArray json3 = new JSONArray();
 
                         for (int i = 0; i < (long) orders.size(); i++) {
@@ -246,9 +242,7 @@ public class ManagerController {
                             json3.put(json2);
                         }
 
-                        json.put("Orders", json3);
-
-                        return new ResponseEntity<>(json3.toString(), HttpStatus.OK); //json.toString() for req display
+                        return new ResponseEntity<>(json3.toString(), HttpStatus.OK);
                     }
             } else{
                 jsonError.put("Message", "You are not a manager!");

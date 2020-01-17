@@ -26,7 +26,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value="/VinylStore/api")
-@Api(value="CommonController", description="Common operations for the Vinyl Store")
+@Api(value="CommonController")
 public class CommonController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -166,8 +166,8 @@ public class CommonController {
         return ResponseEntity.ok(json.toString());
     }
 
-    private ArrayList errorResponse(BindingResult result){
-        ArrayList errorMessage = new ArrayList();
+    private ArrayList<String> errorResponse(BindingResult result){
+        ArrayList<String> errorMessage = new ArrayList<>();
         result.getFieldErrors().forEach(eM -> errorMessage.add(eM.getDefaultMessage()));
         return errorMessage;
     }

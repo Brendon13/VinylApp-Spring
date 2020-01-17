@@ -115,12 +115,4 @@ public class User {
     public void setOrder(Set<Order> order) {
         this.order = order;
     }
-
-//    public String getAuthToken() {
-//        return authToken;
-//    }
-//
-//    public void setAuthToken(String authToken) {
-//        this.authToken = authToken;
-//    }
 }

@@ -14,8 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.EntityNotFoundException;
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +21,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value="/VinylStore/api")
-@Api(value="CustomerController", description="Customer operations for the Vinyl Store")
+@Api(value="CustomerController")
 public class CustomerController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -59,15 +57,6 @@ public class CustomerController {
         if(userService.findByEmailAddress(email).getUserRole().getId() == 1) {
             Cart cart = cartService.findByUserId(userService.findByEmailAddress(email).getId());
             List<CartItem> cartItem = cartItemService.findByCartId(cart.getId());
-            double totalPrice = 0;
-
-            for (int i = 0; i < (long) cartItem.size(); i++) {
-                totalPrice += cartItem.get(i).getQuantity() * cartItem.get(i).getItem().getPrice();
-            }
-
-            JSONObject json = new JSONObject();
-            json.put("NumberOfItems", cartItem.size());
-            json.put("TotalCost", totalPrice);
 
             JSONArray json3 = new JSONArray();
 
@@ -81,14 +70,11 @@ public class CustomerController {
                 json3.put(json2);
             }
 
-            json.put("ItemsInCart", json3);
-
-
             if(cartItem.size() == 0){
                 jsonError.put("Message", "No items in cart!");
                 return new ResponseEntity<>(jsonError.toString(), HttpStatus.NOT_FOUND);
             }
-            else return new ResponseEntity<>(json3.toString(), HttpStatus.OK); //json.toString() to display as in req for backend
+            else return new ResponseEntity<>(json3.toString(), HttpStatus.OK);
         }
         else
             {

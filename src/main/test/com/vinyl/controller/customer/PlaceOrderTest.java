@@ -95,7 +95,7 @@ public class PlaceOrderTest {
         user.setId(111L);
         user.setFirstName("Customer");
         user.setLastName("User");
-        user.setEmailAddress("kovacs.brendon@gmail.com");
+        user.setEmailAddress("test.user@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user.setPassword(bCryptPasswordEncoder.encode("123456"));
         user.setUserRole(new UserRole(1L, "customer"));
@@ -133,7 +133,7 @@ public class PlaceOrderTest {
         order.setUpdatedAt(date);
 
         Map<String, Object> claims = new HashMap<>();
-        String tokenString = Jwts.builder().setClaims(claims).setSubject("kovacs.brendon@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
+        String tokenString = Jwts.builder().setClaims(claims).setSubject("test.user@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, "vinylapp").compact();
 
@@ -141,8 +141,8 @@ public class PlaceOrderTest {
 
         String auth = "Bearer " + tokenString;
 
-        when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
-        when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
+        when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("test.user@gmail.com");
+        when(userService.findByEmailAddress("test.user@gmail.com")).thenReturn(user);
         when(userService.findById(111L)).thenReturn(user);
         when(cartService.findByUserId(111L)).thenReturn(cart);
         when(cartItemService.findByCartId(1L)).thenReturn(cartItemList);
@@ -171,7 +171,7 @@ public class PlaceOrderTest {
         user.setId(111L);
         user.setFirstName("Customer");
         user.setLastName("User");
-        user.setEmailAddress("kovacs.brendon@gmail.com");
+        user.setEmailAddress("test.user@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user.setPassword(bCryptPasswordEncoder.encode("123456"));
         user.setUserRole(new UserRole(1L, "customer"));
@@ -209,7 +209,7 @@ public class PlaceOrderTest {
         order.setUpdatedAt(date);
 
         Map<String, Object> claims = new HashMap<>();
-        String tokenString = Jwts.builder().setClaims(claims).setSubject("kovacs.brendon@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
+        String tokenString = Jwts.builder().setClaims(claims).setSubject("test.user@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, "vinylapp").compact();
 
@@ -217,8 +217,8 @@ public class PlaceOrderTest {
 
         String auth = "Bearer " + tokenString;
 
-        when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
-        when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
+        when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("test.user@gmail.com");
+        when(userService.findByEmailAddress("test.user@gmail.com")).thenReturn(user);
         when(userService.findById(111L)).thenReturn(user);
         when(cartService.findByUserId(111L)).thenReturn(cart);
         when(cartItemService.findByCartId(1L)).thenReturn(cartItemList);

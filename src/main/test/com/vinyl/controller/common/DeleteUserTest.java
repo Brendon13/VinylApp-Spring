@@ -89,7 +89,7 @@ public class DeleteUserTest {
         user.setId(111L);
         user.setFirstName("Customer");
         user.setLastName("User");
-        user.setEmailAddress("kovacs.brendon@gmail.com");
+        user.setEmailAddress("test.user@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user.setPassword(bCryptPasswordEncoder.encode("123456"));
         user.setUserRole(new UserRole(1L, "customer"));
@@ -105,7 +105,7 @@ public class DeleteUserTest {
         String auth = "Bearer " + tokenString;
 
         when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
-        when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
+        when(userService.findByEmailAddress("test.user@gmail.com")).thenReturn(user);
         when(userService.findById(111L)).thenReturn(user);
 
         mockMvc.perform(MockMvcRequestBuilders.delete("/VinylStore/api/users/{user_id}", "111").header("Authorization", auth)).andDo(print()).andExpect(status().isNotFound());

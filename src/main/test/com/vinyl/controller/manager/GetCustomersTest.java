@@ -96,7 +96,7 @@ public class GetCustomersTest {
         user.setId(111L);
         user.setFirstName("Customer");
         user.setLastName("User");
-        user.setEmailAddress("kovacs.brendon@gmail.com");
+        user.setEmailAddress("test.user@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user.setPassword(bCryptPasswordEncoder.encode("123456"));
         user.setUserRole(new UserRole(2L, "manager"));
@@ -107,7 +107,7 @@ public class GetCustomersTest {
         user1.setId(2L);
         user1.setFirstName("Customer1");
         user1.setLastName("User1");
-        user1.setEmailAddress("kovacs.brendon1@gmail.com");
+        user1.setEmailAddress("test.user1@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user1.setPassword(bCryptPasswordEncoder.encode("123456"));
         user1.setUserRole(userRole);
@@ -116,7 +116,7 @@ public class GetCustomersTest {
         user2.setId(1L);
         user2.setFirstName("Customer2");
         user2.setLastName("User2");
-        user2.setEmailAddress("kovacs.brendon2@gmail.com");
+        user2.setEmailAddress("test.user2@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user2.setPassword(bCryptPasswordEncoder.encode("123456"));
         user2.setUserRole(userRole);
@@ -126,7 +126,7 @@ public class GetCustomersTest {
 
 
         Map<String, Object> claims = new HashMap<>();
-        String tokenString = Jwts.builder().setClaims(claims).setSubject("kovacs.brendon@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
+        String tokenString = Jwts.builder().setClaims(claims).setSubject("test.user@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, "vinylapp").compact();
 
@@ -134,8 +134,8 @@ public class GetCustomersTest {
 
         String auth = "Bearer " + tokenString;
 
-        when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
-        when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
+        when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("test.user@gmail.com");
+        when(userService.findByEmailAddress("test.user@gmail.com")).thenReturn(user);
         when(userService.findByUserRole(userRole)).thenReturn(users);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/VinylStore/api/customers").header("Authorization", auth)).andDo(print()).andExpect(status().isOk());
@@ -150,7 +150,7 @@ public class GetCustomersTest {
         user.setId(111L);
         user.setFirstName("Customer");
         user.setLastName("User");
-        user.setEmailAddress("kovacs.brendon@gmail.com");
+        user.setEmailAddress("test.user@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user.setPassword(bCryptPasswordEncoder.encode("123456"));
         user.setUserRole(new UserRole(1L, "customer"));
@@ -161,7 +161,7 @@ public class GetCustomersTest {
         user1.setId(2L);
         user1.setFirstName("Customer1");
         user1.setLastName("User1");
-        user1.setEmailAddress("kovacs.brendon1@gmail.com");
+        user1.setEmailAddress("test.user1@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user1.setPassword(bCryptPasswordEncoder.encode("123456"));
         user1.setUserRole(new UserRole(1L, "customer"));
@@ -170,7 +170,7 @@ public class GetCustomersTest {
         user2.setId(1L);
         user2.setFirstName("Customer2");
         user2.setLastName("User2");
-        user2.setEmailAddress("kovacs.brendon2@gmail.com");
+        user2.setEmailAddress("test.user2@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user2.setPassword(bCryptPasswordEncoder.encode("123456"));
         user2.setUserRole(new UserRole(1L, "customer"));
@@ -181,7 +181,7 @@ public class GetCustomersTest {
         UserRole userRole = new UserRole(1L,"customer");
 
         Map<String, Object> claims = new HashMap<>();
-        String tokenString = Jwts.builder().setClaims(claims).setSubject("kovacs.brendon@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
+        String tokenString = Jwts.builder().setClaims(claims).setSubject("test.user@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, "vinylapp").compact();
 
@@ -189,8 +189,8 @@ public class GetCustomersTest {
 
         String auth = "Bearer " + tokenString;
 
-        when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("kovacs.brendon@gmail.com");
-        when(userService.findByEmailAddress("kovacs.brendon@gmail.com")).thenReturn(user);
+        when(jwtTokenUtil.getUsernameFromToken(tokenString)).thenReturn("test.user@gmail.com");
+        when(userService.findByEmailAddress("test.user@gmail.com")).thenReturn(user);
         when(userService.findByUserRole(userRole)).thenReturn(users);
 
         mockMvc.perform(MockMvcRequestBuilders.get("/VinylStore/api/customers").header("Authorization", auth)).andDo(print()).andExpect(status().isForbidden());

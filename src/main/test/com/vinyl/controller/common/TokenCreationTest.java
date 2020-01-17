@@ -88,7 +88,7 @@ public class TokenCreationTest {
 
     @Test
     public void userLoginTestWithParametersOk() throws Exception{
-        userLogin("kovacs.brendon@gmail.com", "123456").andExpect(status().isOk());
+        userLogin("test.user@gmail.com", "123456").andExpect(status().isOk());
     }
 
     @Test
@@ -98,7 +98,7 @@ public class TokenCreationTest {
 
     @Test
     public void userLoginTestWithNoPassword() throws Exception{
-        userLogin("kovacs.brendon@gmail.com", "").andExpect(status().isBadRequest());
+        userLogin("test.user@gmail.com", "").andExpect(status().isBadRequest());
     }
 
     @Test
@@ -109,20 +109,20 @@ public class TokenCreationTest {
         user.setId(111L);
         user.setFirstName("Customer");
         user.setLastName("User");
-        user.setEmailAddress("kovacs.brendon@gmail.com");
+        user.setEmailAddress("test.user@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user.setPassword(bCryptPasswordEncoder.encode("123456"));
 
-        UserDetails userDetails = userDetailsService.loadUserByUsername("kovacs.brendon@gmail.com");
+        UserDetails userDetails = userDetailsService.loadUserByUsername("test.user@gmail.com");
 
         Map<String, Object> claims = new HashMap<>();
-        String tokenString = Jwts.builder().setClaims(claims).setSubject("kovacs.brendon@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
+        String tokenString = Jwts.builder().setClaims(claims).setSubject("test.user@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, "vinylapp").compact();
 
         assertNotNull(tokenString);
 
-        when(userDetailsService.loadUserByUsername("kovacs.brendon@gmail.com")).thenReturn(userDetails);
+        when(userDetailsService.loadUserByUsername("test.user@gmail.com")).thenReturn(userDetails);
         when(jwtTokenUtil.generateToken(userDetails)).thenReturn(tokenString);
 
         userLogin(user.getEmailAddress(), user.getPassword()).andDo(print()).andExpect(status().isOk());
@@ -135,20 +135,20 @@ public class TokenCreationTest {
         user.setId(111L);
         user.setFirstName("Customer");
         user.setLastName("User");
-        user.setEmailAddress("kovacs.brendon@gmail.com");
+        user.setEmailAddress("test.user@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user.setPassword(bCryptPasswordEncoder.encode("123456"));
 
-        UserDetails userDetails = userDetailsService.loadUserByUsername("kovacs.brendon@gmail.com");
+        UserDetails userDetails = userDetailsService.loadUserByUsername("test.user@gmail.com");
 
         Map<String, Object> claims = new HashMap<>();
-        String tokenString = Jwts.builder().setClaims(claims).setSubject("kovacs.brendon@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
+        String tokenString = Jwts.builder().setClaims(claims).setSubject("test.user@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, "vinylapp").compact();
 
         assertNotNull(tokenString);
 
-        when(userDetailsService.loadUserByUsername("kovacs.brendon@gmail.com")).thenReturn(userDetails);
+        when(userDetailsService.loadUserByUsername("test.user@gmail.com")).thenReturn(userDetails);
         when(jwtTokenUtil.generateToken(userDetails)).thenReturn(tokenString);
 
         userLogin("", user.getPassword()).andDo(print()).andExpect(status().isBadRequest());
@@ -161,20 +161,20 @@ public class TokenCreationTest {
         user.setId(111L);
         user.setFirstName("Customer");
         user.setLastName("User");
-        user.setEmailAddress("kovacs.brendon@gmail.com");
+        user.setEmailAddress("test.user@gmail.com");
         when(bCryptPasswordEncoder.encode("123456")).thenReturn("$2a$10$GVTnofdX9dK/1xZXRv3hNuGy2Jw1mV56/cl2untyOlqYdRoVYB2X2");
         user.setPassword(bCryptPasswordEncoder.encode("123456"));
 
-        UserDetails userDetails = userDetailsService.loadUserByUsername("kovacs.brendon@gmail.com");
+        UserDetails userDetails = userDetailsService.loadUserByUsername("test.user@gmail.com");
 
         Map<String, Object> claims = new HashMap<>();
-        String tokenString = Jwts.builder().setClaims(claims).setSubject("kovacs.brendon@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
+        String tokenString = Jwts.builder().setClaims(claims).setSubject("test.user@gmail.com").setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(SignatureAlgorithm.HS512, "vinylapp").compact();
 
         assertNotNull(tokenString);
 
-        when(userDetailsService.loadUserByUsername("kovacs.brendon@gmail.com")).thenReturn(userDetails);
+        when(userDetailsService.loadUserByUsername("test.user@gmail.com")).thenReturn(userDetails);
         when(jwtTokenUtil.generateToken(userDetails)).thenReturn(tokenString);
 
         userLogin(user.getEmailAddress(), "").andDo(print()).andExpect(status().isBadRequest());

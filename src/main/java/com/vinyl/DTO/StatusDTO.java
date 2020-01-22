@@ -1,4 +1,4 @@
-package com.vinyl.model;
+package com.vinyl.DTO;
 
 public class StatusDTO {
     private Long id;

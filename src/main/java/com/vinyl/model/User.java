@@ -13,7 +13,6 @@ public class User {
 
     @Id
     @GeneratedValue
-    @ApiModelProperty(hidden = true)
     private Long id;
 
     @NotBlank(message = "First name can't be blank")
@@ -29,16 +28,13 @@ public class User {
     @NotBlank(message = "Password can't be blank")
     private String password;
 
-    @ApiModelProperty(hidden = true)
     @OneToOne
     @JoinColumn(name = "user_role_id", nullable = false, foreignKey=@ForeignKey(name = "Fk_user_user_role_id"))
     private UserRole userRole;
 
-    @ApiModelProperty(hidden = true)
     @OneToMany(mappedBy="user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Order> order;
 
-    @ApiModelProperty(hidden = true)
     @OneToOne(mappedBy="user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Cart cart;
 

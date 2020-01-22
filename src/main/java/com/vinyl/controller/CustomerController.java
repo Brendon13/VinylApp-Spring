@@ -1,5 +1,6 @@
 package com.vinyl.controller;
 
+import com.vinyl.DTO.CartItemDTO;
 import com.vinyl.config.JwtTokenUtil;
 import com.vinyl.model.*;
 import com.vinyl.service.*;
@@ -48,7 +49,6 @@ public class CustomerController {
     private JwtTokenUtil jwtTokenUtil;
 
 
-    @ApiOperation(value = "Get cart details", response = Iterable.class)
     @GetMapping(value = "/customer/cart/detail", produces = "application/json")
     public ResponseEntity<?> getCart(@RequestHeader("Authorization") String auth) throws JSONException {
         JSONObject jsonError = new JSONObject();
@@ -83,7 +83,6 @@ public class CustomerController {
         }
     }
 
-    @ApiOperation(value = "Add vinyl to cart", response = Iterable.class)
     @PostMapping(value = "/vinyls/cart/{vinyl_id}", produces = "application/json")
     public @ResponseBody ResponseEntity<?> addVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id, @RequestBody CartItemDTO cartItemDTO) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
@@ -128,7 +127,6 @@ public class CustomerController {
             }
     }
 
-    @ApiOperation(value = "Remove vinyl from cart", response = Iterable.class)
     @DeleteMapping(value = "/users/cart/{item_id}", produces = "application/json")
     public @ResponseBody ResponseEntity<?> removeVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long item_id) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
@@ -157,7 +155,6 @@ public class CustomerController {
         }
     }
 
-    @ApiOperation(value = "Place order", response = Iterable.class)
     @PutMapping(value = "/orders", produces = "application/json")
     public @ResponseBody ResponseEntity<?> placeOrder(@RequestHeader("Authorization") String auth) throws JSONException {
         JSONObject json = new JSONObject();
@@ -201,7 +198,6 @@ public class CustomerController {
             }
     }
 
-    @ApiOperation(value = "Get order", response = Iterable.class)
     @GetMapping(value = "/users/orders", produces = "application/json")
     public ResponseEntity<?> getUserOrder(@RequestHeader("Authorization") String auth) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));

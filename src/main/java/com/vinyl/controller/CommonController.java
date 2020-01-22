@@ -3,8 +3,6 @@ package com.vinyl.controller;
 import com.vinyl.config.JwtTokenUtil;
 import com.vinyl.model.*;
 import com.vinyl.service.*;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +24,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value="/VinylStore/api")
-@Api(value="CommonController")
 public class CommonController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -49,7 +46,6 @@ public class CommonController {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
-    @ApiOperation(value = "Create User", response = Iterable.class)
     @PostMapping(value = "/users", produces = "application/json")
     public ResponseEntity<Object> addUser(@Valid @RequestBody User user, BindingResult result) throws JSONException {
         JSONObject json = new JSONObject();
@@ -72,7 +68,6 @@ public class CommonController {
         }
     }
 
-    @ApiOperation(value = "Create Manager", response = Iterable.class)
     @PostMapping(value = "/managers", produces = "application/json")
     public ResponseEntity<Object> addManager(@Valid @RequestBody User user, BindingResult result) throws JSONException {
         JSONObject json = new JSONObject();
@@ -90,7 +85,6 @@ public class CommonController {
         }
     }
 
-    @ApiOperation(value = "User Login", response = Iterable.class)
     @PostMapping(value = "/users/login", produces = "application/json")
     public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody JwtRequest authenticationRequest, BindingResult result) throws Exception {
         JSONObject json = new JSONObject();
@@ -113,7 +107,6 @@ public class CommonController {
         return ResponseEntity.ok(new JwtResponse(token));
     }
 
-    @ApiOperation(value = "Retrieve all vinyls", response = Iterable.class)
     @GetMapping(value = "/vinyls", produces = "application/json")
     public ResponseEntity<?> getVinyl(@RequestHeader("Authorization") String auth) throws JSONException{
         JSONObject jsonErr = new JSONObject();
@@ -146,7 +139,6 @@ public class CommonController {
         }
     }
 
-    @ApiOperation(value = "Delete User", response = Iterable.class)
     @DeleteMapping(value = "/users/delete" , produces = "application/json")
     public @ResponseBody ResponseEntity<Object> deleteUser(@RequestHeader("Authorization") String auth) throws JSONException {
         JSONObject json = new JSONObject();
@@ -157,7 +149,6 @@ public class CommonController {
 
     }
 
-    @ApiOperation(value = "Verify If Manager", response = Iterable.class)
     @GetMapping(value = "/verifyManager")
     public ResponseEntity<?> verifyManager(@RequestHeader("Authorization") String auth) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));

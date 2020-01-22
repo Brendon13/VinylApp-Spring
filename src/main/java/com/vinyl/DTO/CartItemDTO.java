@@ -1,4 +1,4 @@
-package com.vinyl.model;
+package com.vinyl.DTO;
 
 public class CartItemDTO {
     private Long quantity;

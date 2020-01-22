@@ -30,8 +30,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Common
@@ -58,8 +56,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Common
@@ -86,8 +82,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Common
@@ -109,8 +103,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Common
@@ -141,8 +133,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Common
@@ -164,8 +154,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Customer
@@ -200,8 +188,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Customer
@@ -236,8 +222,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Customer
@@ -266,8 +250,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Customer
@@ -296,8 +278,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Manager
@@ -326,8 +306,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Manager
@@ -361,8 +339,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Manager
@@ -396,8 +372,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Manager
@@ -419,8 +393,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Manager
@@ -449,8 +421,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
 
       tags:
@@ -460,8 +430,6 @@ components:
   responses:
     UnauthorizedError:
       description: Access token is missing or invalid
-    UnexpectedError:
-      description: Unexpected error
     UnexpectedParameters:
       description: Problem with parameters
     EmailInUse:

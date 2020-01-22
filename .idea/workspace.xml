@@ -2,20 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a6ebc16-1575-44d2-8e0e-6e631aae8654" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_6_0_M1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_5_6_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_6_0_M1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_params_5_6_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/common/DeleteUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/common/DeleteUserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/common/GetVinylsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/common/GetVinylsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/common/TokenCreationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/common/TokenCreationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/customer/AddVinylToCartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/customer/AddVinylToCartTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/customer/CartDetailsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/customer/CartDetailsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/customer/PlaceOrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/customer/PlaceOrderTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/customer/RemoveVinylFromCartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/customer/RemoveVinylFromCartTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/AddVinylToStoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/AddVinylToStoreTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/DeleteVinylFromStoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/DeleteVinylFromStoreTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/GetCustomersTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/GetCustomersTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/GetOrderFromUserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/GetOrderFromUserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/UpdateOrderStatusTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/UpdateOrderStatusTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/UpdateVinylTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/manager/UpdateVinylTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VinylStore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/VinylStore.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/model/CartItemDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/DTO/CartItemDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/model/StatusDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/DTO/StatusDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/model/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +49,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
@@ -309,10 +309,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="93" y="93" width="1862" height="926" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1576847077992" />
-    <state x="721" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1579246204118">
+    <state x="721" y="380" key="com.intellij.ide.util.TipDialog" timestamp="1579687006638">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="721" y="380" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1579246204118" />
+    <state x="721" y="380" key="com.intellij.ide.util.TipDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1579687006638" />
     <state x="767" y="185" key="refactoring.ChangeSignatureDialog" timestamp="1578642698823">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

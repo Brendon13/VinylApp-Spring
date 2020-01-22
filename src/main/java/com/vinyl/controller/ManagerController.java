@@ -1,5 +1,6 @@
 package com.vinyl.controller;
 
+import com.vinyl.DTO.StatusDTO;
 import com.vinyl.config.JwtTokenUtil;
 import com.vinyl.model.*;
 import com.vinyl.service.ItemService;
@@ -41,7 +42,6 @@ public class ManagerController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
-    @ApiOperation(value = "Add vinyl to store", response = Iterable.class)
     @PostMapping(value = "/vinylsAdd", produces = "application/json")
     public ResponseEntity<?> addVinyl(@RequestHeader("Authorization") String auth, @RequestBody Item vinyl) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
@@ -84,7 +84,6 @@ public class ManagerController {
         }
     }
 
-    @ApiOperation(value = "Delete vinyl from store", response = Iterable.class)
     @DeleteMapping(value = "/vinyls/{vinyl_id}", produces = "application/json")
     public @ResponseBody ResponseEntity<?> deleteVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
@@ -114,7 +113,6 @@ public class ManagerController {
         }
     }
 
-    @ApiOperation(value = "Update vinyl", response = Iterable.class)
     @PutMapping(value = "/vinyls/update/{vinyl_id}", produces = "application/json")
     public @ResponseBody ResponseEntity<?> updateVinyl(@RequestHeader("Authorization") String auth, @RequestBody Item vinyl, @PathVariable Long vinyl_id) throws JSONException {
         Item item = new Item();
@@ -156,7 +154,6 @@ public class ManagerController {
         }
     }
 
-    @ApiOperation(value = "Update order", response = Iterable.class)
     @PutMapping(value = "/orders/{order_id}", produces = "application/json")
     public @ResponseBody ResponseEntity<?> updateOrder(@RequestHeader("Authorization") String auth, @RequestBody StatusDTO status, @PathVariable Long order_id) throws JSONException {
         Order order;
@@ -190,7 +187,6 @@ public class ManagerController {
         }
     }
 
-    @ApiOperation(value = "Get all customers", response = Iterable.class)
     @GetMapping(value = "/customers", produces = "application/json")
     public ResponseEntity<?> getCustomers(@RequestHeader("Authorization") String auth) throws JSONException{
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
@@ -218,7 +214,6 @@ public class ManagerController {
         }
     }
 
-    @ApiOperation(value = "Get orders from an user", response = Iterable.class)
     @GetMapping(value = "/users/{user_id}/orders", produces = "application/json")
     public ResponseEntity<?> getUserOrder(@RequestHeader("Authorization") String auth, @PathVariable Long user_id) throws JSONException {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
@@ -251,7 +246,6 @@ public class ManagerController {
 
     }
 
-    @ApiOperation(value = "Retrieve vinyl", response = Iterable.class)
     @GetMapping(value = "/vinyls/{vinyl_id}", produces = "application/json")
     public ResponseEntity<?> getVinyl(@RequestHeader("Authorization") String auth, @PathVariable Long vinyl_id) throws JSONException{
         JSONObject jsonErr = new JSONObject();

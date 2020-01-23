@@ -107,20 +107,13 @@ paths:
       tags:
         - Common
 
-  /users/{user_id}:
+  /users/delete:
     delete:
       security:
         - bearerAuth: []
       summary: Delete user Service
       description: |
         No description
-      parameters:
-        - in: path
-          name: user_id
-          required: true
-          schema:
-            type: number
-          description: The user ID
 
       responses:
         200:
@@ -192,7 +185,7 @@ paths:
       tags:
         - Customer
 
-  /users/{user_id}/cart/{item_id}:
+  /users/cart/{item_id}:
     delete:
       security:
         - bearerAuth: []
@@ -200,12 +193,6 @@ paths:
       description: |
         No description
       parameters:
-        - in: path
-          name: user_id
-          required: true
-          schema:
-            type: number
-          description: The user ID
         - in: path
           name: item_id
           required: true
@@ -226,20 +213,13 @@ paths:
       tags:
         - Customer
 
-  /{user_id}/orders:
+  /orders:
     put:
       security:
         - bearerAuth: []
       summary: Place order
       description: |
         No description
-      parameters:
-        - in: path
-          name: user_id
-          required: true
-          schema:
-            type: number
-          description: The user ID
 
       responses:
         200:
@@ -464,13 +444,6 @@ components:
         quantity:
           type: number
 
-    JwtRequest:
-      type: object
-      properties:
-        username:
-          type: string
-        password:
-          type: string
 
   securitySchemes:
     bearerAuth:

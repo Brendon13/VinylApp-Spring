@@ -1,9 +1,8 @@
 package com.vinyl.DTO;
 
+import com.vinyl.model.Item;
 
-import com.vinyl.model.CartItem;
-
-public class CartItemDTO {
+public class ItemDTO {
     private Long id;
 
     private String name;
@@ -14,7 +13,7 @@ public class CartItemDTO {
 
     private Long quantity;
 
-    public CartItemDTO(Long id, String name, Double price, String description, Long quantity) {
+    public ItemDTO(Long id, String name, Double price, String description, Long quantity) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -62,8 +61,7 @@ public class CartItemDTO {
         this.quantity = quantity;
     }
 
-    public static CartItemDTO build(CartItem cartItem){
-        return new CartItemDTO(cartItem.getItem().getId(), cartItem.getItem().getName(), cartItem.getItem().getPrice(), cartItem.getItem().getDescription(), cartItem.getQuantity());
+    public static ItemDTO build(Item item){
+        return new ItemDTO(item.getId(), item.getName(), item.getPrice(), item.getDescription(), item.getQuantity());
     }
-
 }

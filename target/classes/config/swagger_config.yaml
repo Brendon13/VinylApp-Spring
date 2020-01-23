@@ -30,8 +30,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Common
@@ -58,8 +56,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Common
@@ -86,8 +82,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Common
@@ -109,26 +103,17 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Common
 
-  /users/{user_id}:
+  /users/delete:
     delete:
       security:
         - bearerAuth: []
       summary: Delete user Service
       description: |
         No description
-      parameters:
-        - in: path
-          name: user_id
-          required: true
-          schema:
-            type: number
-          description: The user ID
 
       responses:
         200:
@@ -141,8 +126,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Common
@@ -164,8 +147,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Customer
@@ -200,13 +181,11 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Customer
 
-  /users/{user_id}/cart/{item_id}:
+  /users/cart/{item_id}:
     delete:
       security:
         - bearerAuth: []
@@ -214,12 +193,6 @@ paths:
       description: |
         No description
       parameters:
-        - in: path
-          name: user_id
-          required: true
-          schema:
-            type: number
-          description: The user ID
         - in: path
           name: item_id
           required: true
@@ -236,26 +209,17 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Customer
 
-  /{user_id}/orders:
+  /orders:
     put:
       security:
         - bearerAuth: []
       summary: Place order
       description: |
         No description
-      parameters:
-        - in: path
-          name: user_id
-          required: true
-          schema:
-            type: number
-          description: The user ID
 
       responses:
         200:
@@ -266,8 +230,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Customer
@@ -296,8 +258,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Manager
@@ -326,8 +286,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Manager
@@ -361,8 +319,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Manager
@@ -396,8 +352,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Manager
@@ -419,8 +373,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
       tags:
         - Manager
@@ -449,8 +401,6 @@ paths:
           $ref: '#/components/responses/UnauthorizedError'
         403:
           $ref: '#/components/responses/EmailInUse'
-        500:
-          $ref: '#/components/responses/UnexpectedError'
 
 
       tags:
@@ -460,8 +410,6 @@ components:
   responses:
     UnauthorizedError:
       description: Access token is missing or invalid
-    UnexpectedError:
-      description: Unexpected error
     UnexpectedParameters:
       description: Problem with parameters
     EmailInUse:
@@ -496,13 +444,6 @@ components:
         quantity:
           type: number
 
-    JwtRequest:
-      type: object
-      properties:
-        username:
-          type: string
-        password:
-          type: string
 
   securitySchemes:
     bearerAuth:

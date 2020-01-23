@@ -10,7 +10,6 @@ import com.vinyl.service.ItemService;
 import com.vinyl.service.OrderService;
 import com.vinyl.service.StatusService;
 import com.vinyl.service.UserService;
-import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +22,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value="/VinylStore/api")
-@Api(value="ManagerController")
 public class ManagerController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;

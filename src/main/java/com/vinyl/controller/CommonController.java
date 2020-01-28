@@ -114,7 +114,7 @@ public class CommonController {
         userService.delete(userService.findById(userService.findByEmailAddress(email).getId()));
 
         messageDTO.setMessage("User deleted!");
-        return new ResponseEntity<>(messageDTO, HttpStatus.FORBIDDEN);
+        return new ResponseEntity<>(messageDTO, HttpStatus.OK);
     }
 
     @GetMapping(value = "/verifyManager")

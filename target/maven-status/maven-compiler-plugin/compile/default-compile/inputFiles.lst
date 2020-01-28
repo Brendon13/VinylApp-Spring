@@ -1,24 +1,47 @@
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\repository\OrderItemRepository.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\model\UserRole.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\controller\MainController.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\service\UserService.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\VinylApplication.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\model\Item.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\service\JwtUserDetailsService.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\config\JwtAuthenticationEntryPoint.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\model\Cart.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\model\RoleName.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\repository\UserRepository.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\repository\UserRoleRepository.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\config\WebSecurityConfig.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\model\JwtResponse.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\service\UserServiceImpl.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\model\User.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\model\Order.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\repository\ItemRepository.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\repository\OrderRepository.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\model\JwtRequest.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\config\JwtTokenUtil.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\config\JwtRequestFilter.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\repository\CartRepository.java
-D:\VinylApp\VinylApp-backEndOnly ADDLOGDEL\src\main\java\com\vinyl\model\OrderItem.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\model\Item.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\controller\ManagerController.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\ItemService.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\StatusServiceImpl.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\VinylApplication.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\DTO\ItemDTO.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\model\UserRole.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\repository\OrderRepository.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\config\SwaggerWsEndpointsConfig.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\config\WebSecurityConfig.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\model\CartItem.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\config\JwtTokenUtil.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\model\Cart.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\repository\UserRepository.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\CartItemService.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\UserService.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\DTO\OrderDTO.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\repository\CartItemRepository.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\DTO\UserRoleDTO.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\JwtUserDetailsService.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\OrderService.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\repository\ItemRepository.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\repository\UserRoleRepository.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\model\Status.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\CartServiceImpl.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\config\JwtRequestFilter.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\controller\CustomerController.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\model\JwtResponse.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\DTO\StatusDTO.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\DTO\MessageDTO.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\StatusService.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\ItemServiceImpl.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\model\Order.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\UserServiceImpl.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\DTO\UserDTO.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\config\JwtAuthenticationEntryPoint.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\model\User.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\config\Swagger2Config.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\controller\CommonController.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\CartItemServiceImpl.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\DTO\CartItemQuantityDTO.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\OrderServiceImpl.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\model\JwtRequest.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\repository\StatusRepository.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\service\CartService.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\DTO\CartItemDTO.java
+D:\VinylApp\VINYLAPP\VinylApp-Spring\src\main\java\com\vinyl\repository\CartRepository.java

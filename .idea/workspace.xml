@@ -2,13 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a6ebc16-1575-44d2-8e0e-6e631aae8654" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_45.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_18.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/DTO/CartItemDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/DTO/CartItemDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VinylStore.iml" beforeDir="false" afterPath="$PROJECT_DIR$/VinylStore.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config/swagger_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/swagger_config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/liquibase.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/liquibase.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/common/UserCreationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/vinyl/controller/customer/UserCreationTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/VinylStore.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinyl/DTO/CartItemDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinyl/DTO/CartItemDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinyl/controller/CommonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinyl/controller/CommonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinyl/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinyl/controller/CustomerController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vinyl/controller/ManagerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinyl/controller/ManagerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinyl/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinyl/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/config/swagger_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/config/swagger_config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/liquibase.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/liquibase.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/vinyl/controller/common/UserCreationTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,63 +116,63 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UpdateOrderStatusTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CartDetailsTest.getCartDetailsTestWithParamsOKAndItemsInCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VinylStore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.vinyl.controller.manager.*" />
+          <option name="PATTERN" value="com.vinyl.controller.customer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.vinyl.controller.manager" />
-      <option name="MAIN_CLASS_NAME" value="com.vinyl.controller.manager.UpdateOrderStatusTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UpdateOrderStatusTest.updateOrderStatusTestWithParamsOK" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="VinylStore" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.vinyl.controller.manager.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.vinyl.controller.manager" />
-      <option name="MAIN_CLASS_NAME" value="com.vinyl.controller.manager.UpdateOrderStatusTest" />
-      <option name="METHOD_NAME" value="updateOrderStatusTestWithParamsOK" />
+      <option name="PACKAGE_NAME" value="com.vinyl.controller.customer" />
+      <option name="MAIN_CLASS_NAME" value="com.vinyl.controller.customer.CartDetailsTest" />
+      <option name="METHOD_NAME" value="getCartDetailsTestWithParamsOKAndItemsInCart" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UpdateVinylTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TokenCreationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VinylStore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.vinyl.controller.manager.*" />
+          <option name="PATTERN" value="com.vinyl.controller.common.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.vinyl.controller.manager" />
-      <option name="MAIN_CLASS_NAME" value="com.vinyl.controller.manager.UpdateVinylTest" />
+      <option name="PACKAGE_NAME" value="com.vinyl.controller.common" />
+      <option name="MAIN_CLASS_NAME" value="com.vinyl.controller.common.TokenCreationTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UpdateVinylTest.updateVinylTestWithPriceNegative" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserCreationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="VinylStore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.vinyl.controller.manager.*" />
+          <option name="PATTERN" value="com.vinyl.controller.customer.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.vinyl.controller.manager" />
-      <option name="MAIN_CLASS_NAME" value="com.vinyl.controller.manager.UpdateVinylTest" />
-      <option name="METHOD_NAME" value="updateVinylTestWithPriceNegative" />
+      <option name="PACKAGE_NAME" value="com.vinyl.controller.customer" />
+      <option name="MAIN_CLASS_NAME" value="com.vinyl.controller.customer.UserCreationTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserCreationTest.managerCreationTestWithParametersOK" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="VinylStore" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vinyl.controller.customer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vinyl.controller.customer" />
+      <option name="MAIN_CLASS_NAME" value="com.vinyl.controller.customer.UserCreationTest" />
+      <option name="METHOD_NAME" value="managerCreationTestWithParametersOK" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -165,10 +181,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.VinylApplication" />
-        <item itemvalue="JUnit.UpdateOrderStatusTest" />
-        <item itemvalue="JUnit.UpdateVinylTest" />
-        <item itemvalue="JUnit.UpdateVinylTest.updateVinylTestWithPriceNegative" />
-        <item itemvalue="JUnit.UpdateOrderStatusTest.updateOrderStatusTestWithParamsOK" />
+        <item itemvalue="JUnit.CartDetailsTest.getCartDetailsTestWithParamsOKAndItemsInCart" />
+        <item itemvalue="JUnit.UserCreationTest" />
+        <item itemvalue="JUnit.UserCreationTest.managerCreationTestWithParametersOK" />
+        <item itemvalue="JUnit.TokenCreationTest" />
       </list>
     </recent_temporary>
   </component>
@@ -215,14 +231,18 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="617" y="214" key="#Project_Structure/0.0.2048.1112@0.0.2048.1112" timestamp="1578643111152" />
+    <state x="755" y="311" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1580212514130">
+      <screen x="0" y="0" width="2048" height="1112" />
+    </state>
+    <state x="755" y="311" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1580212514130" />
     <state x="479" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576480220649">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="479" y="211" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1576480220649" />
-    <state x="93" y="93" width="1862" height="926" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1578644079843">
+    <state x="93" y="93" width="1862" height="926" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1580214782688">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="93" y="93" width="1862" height="926" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1578644079843" />
+    <state x="93" y="93" width="1862" height="926" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.2048.1112@0.0.2048.1112" timestamp="1580214782688" />
     <state x="795" y="359" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1576502419132">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -263,38 +283,38 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1579794263505" />
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1580212145737">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1580220833384">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1580212145737" />
-    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1580212145737">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1580220833384" />
+    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1580220833383">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1580212145737" />
-    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1580212145737">
+    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1580220833383" />
+    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1580220833383">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1580212145737" />
-    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1580212145737">
+    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1580220833383" />
+    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1580220833384">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1580212145737" />
-    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1579708592360">
+    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1580220833384" />
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1580215353971">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1579708592360" />
-    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1579708592360">
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1580215353971" />
+    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1580215353970">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1579708592360" />
-    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1579708592360">
+    <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1580215353970" />
+    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1580215353970">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1579708592360" />
-    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1579708592360">
+    <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1580215353970" />
+    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1580215353971">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1579708592360" />
+    <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1580215353971" />
     <state x="533" y="198" key="SettingsEditor" timestamp="1576846958387">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

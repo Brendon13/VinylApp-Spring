@@ -29,9 +29,6 @@ public class CommonController {
     private UserService userService;
 
     @Autowired
-    private CartService cartService;
-
-    @Autowired
     private ItemService itemService;
 
     @Autowired
@@ -42,40 +39,6 @@ public class CommonController {
 
     @Autowired
     private JwtUserDetailsService userDetailsService;
-
-    @PostMapping(value = "/users", produces = "application/json")
-    public ResponseEntity<MessageDTO> addUser(@Valid @RequestBody User user){
-        MessageDTO messageDTO = new MessageDTO();
-
-        if (userService.findByEmailAddress(user.getEmailAddress()) == null) {
-            userService.save(user);
-
-            Cart cart = new Cart();
-            cart.setUser(user);
-            cartService.save(cart);
-
-            messageDTO.setMessage("User Created!");
-            return new ResponseEntity<>(messageDTO, HttpStatus.OK);
-        } else {
-            messageDTO.setMessage("Email already in use!");
-            return new ResponseEntity<>(messageDTO, HttpStatus.FORBIDDEN);
-        }
-    }
-
-    @PostMapping(value = "/managers", produces = "application/json")
-    public ResponseEntity<MessageDTO> addManager(@Valid @RequestBody User user){
-        MessageDTO messageDTO = new MessageDTO();
-
-        if (userService.findByEmailAddress(user.getEmailAddress()) == null) {
-            userService.saveManager(user);
-
-            messageDTO.setMessage("Manager Created!");
-            return new ResponseEntity<>(messageDTO, HttpStatus.OK);
-        } else {
-            messageDTO.setMessage("Email already in use!");
-            return new ResponseEntity<>(messageDTO, HttpStatus.FORBIDDEN);
-        }
-    }
 
     @PostMapping(value = "/users/login", produces = "application/json")
     public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody JwtRequest authenticationRequest) {

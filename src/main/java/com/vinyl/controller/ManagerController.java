@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,6 +38,21 @@ public class ManagerController {
 
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
+
+    @PostMapping(value = "/managers", produces = "application/json")
+    public ResponseEntity<MessageDTO> addManager(@Valid @RequestBody User user){
+        MessageDTO messageDTO = new MessageDTO();
+
+        if (userService.findByEmailAddress(user.getEmailAddress()) == null) {
+            userService.saveManager(user);
+
+            messageDTO.setMessage("Manager Created!");
+            return new ResponseEntity<>(messageDTO, HttpStatus.OK);
+        } else {
+            messageDTO.setMessage("Email already in use!");
+            return new ResponseEntity<>(messageDTO, HttpStatus.FORBIDDEN);
+        }
+    }
 
     @PostMapping(value = "/vinylsAdd", produces = "application/json")
     public ResponseEntity<MessageDTO> addVinyl(@RequestHeader("Authorization") String auth, @RequestBody Item vinyl){

@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,6 +46,24 @@ public class CustomerController {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    @PostMapping(value = "/users", produces = "application/json")
+    public ResponseEntity<MessageDTO> addUser(@Valid @RequestBody User user){
+        MessageDTO messageDTO = new MessageDTO();
+
+        if (userService.findByEmailAddress(user.getEmailAddress()) == null) {
+            userService.save(user);
+
+            Cart cart = new Cart();
+            cart.setUser(user);
+            cartService.save(cart);
+
+            messageDTO.setMessage("User Created!");
+            return new ResponseEntity<>(messageDTO, HttpStatus.OK);
+        } else {
+            messageDTO.setMessage("Email already in use!");
+            return new ResponseEntity<>(messageDTO, HttpStatus.FORBIDDEN);
+        }
+    }
 
     @GetMapping(value = "/customer/cart/detail", produces = "application/json")
     public ResponseEntity<Object> getCart(@RequestHeader("Authorization") String auth){
@@ -56,7 +75,6 @@ public class CustomerController {
         List<CartItemDTO> cartItemDTOS = new ArrayList<>();
 
         cartItem.forEach(cartItem1 -> {
-            assert false;
             cartItemDTOS.add(CartItemDTO.build(cartItem1));
         });
 

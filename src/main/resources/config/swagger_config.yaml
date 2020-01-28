@@ -32,7 +32,7 @@ paths:
           $ref: '#/components/responses/EmailInUse'
 
       tags:
-        - Common
+        - Customer
 
   /managers:
     post:
@@ -58,7 +58,7 @@ paths:
           $ref: '#/components/responses/EmailInUse'
 
       tags:
-        - Common
+        - Manager
 
   /users/login:
     post:

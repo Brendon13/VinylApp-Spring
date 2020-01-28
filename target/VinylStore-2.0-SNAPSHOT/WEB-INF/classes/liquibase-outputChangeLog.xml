@@ -1,0 +1,143 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-3.8.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-1">
+        <createTable tableName="cart">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-2">
+        <createTable tableName="cart_item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="quantity" type="BIGINT"/>
+            <column name="cart_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-3">
+        <createTable tableName="hibernate_sequence">
+            <column name="next_val" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-4">
+        <createTable tableName="item">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="price" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-5">
+        <createTable tableName="order_status">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="status" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-6">
+        <createTable tableName="orders">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="created_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="total_price" type="DOUBLE"/>
+            <column name="updated_at" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-7">
+        <createTable tableName="user">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="email_address" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="user_role_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-8">
+        <createTable tableName="user_role">
+            <column name="id" type="BIGINT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="roles" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-9">
+        <createIndex indexName="Fk_cart_item_cart_id" tableName="cart_item">
+            <column name="cart_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-10">
+        <createIndex indexName="Fk_cart_item_item_id" tableName="cart_item">
+            <column name="item_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-11">
+        <createIndex indexName="Fk_cart_user_id" tableName="cart">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-12">
+        <createIndex indexName="Fk_orders_status_id" tableName="orders">
+            <column name="status_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-13">
+        <createIndex indexName="Fk_orders_user_id" tableName="orders">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-14">
+        <createIndex indexName="Fk_user_user_role_id" tableName="user">
+            <column name="user_role_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-15">
+        <addForeignKeyConstraint baseColumnNames="cart_id" baseTableName="cart_item" constraintName="Fk_cart_item_cart_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="cart" validate="true"/>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-16">
+        <addForeignKeyConstraint baseColumnNames="item_id" baseTableName="cart_item" constraintName="Fk_cart_item_item_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="item" validate="true"/>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-17">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="cart" constraintName="Fk_cart_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-18">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="orders" constraintName="Fk_orders_status_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="order_status" validate="true"/>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-19">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="orders" constraintName="Fk_orders_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user" validate="true"/>
+    </changeSet>
+    <changeSet author="norbert.kovacs (generated)" id="1580199005372-20">
+        <addForeignKeyConstraint baseColumnNames="user_role_id" baseTableName="user" constraintName="Fk_user_user_role_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_role" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

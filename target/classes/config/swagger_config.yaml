@@ -71,7 +71,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/JwtRequest'
+              $ref: '#/components/schemas/UserLogin'
 
       responses:
         200:
@@ -81,7 +81,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Common
@@ -102,7 +102,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Common
@@ -125,7 +125,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Common
@@ -146,7 +146,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Customer
@@ -180,7 +180,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Customer
@@ -208,7 +208,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Customer
@@ -229,7 +229,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Customer
@@ -257,7 +257,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Manager
@@ -285,7 +285,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Manager
@@ -309,6 +309,32 @@ paths:
           schema:
             type: number
           description: The vinyl ID
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/AccessForbidden'
+
+      tags:
+        - Manager
+
+    get:
+      security:
+        - bearerAuth: []
+      summary: Get vinyl
+      description: |
+        No description
+      parameters:
+        - in: path
+          name: vinyl_id
+          required: true
+          schema:
+            type: number
+          description: The vinyl ID
 
       responses:
         200:
@@ -318,7 +344,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Manager
@@ -351,7 +377,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Manager
@@ -372,7 +398,7 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Manager
@@ -400,8 +426,29 @@ paths:
         401:
           $ref: '#/components/responses/UnauthorizedError'
         403:
-          $ref: '#/components/responses/EmailInUse'
+          $ref: '#/components/responses/AccessForbidden'
 
+
+      tags:
+        - Manager
+
+  /verifyManager:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Verify if user is manager
+      description: |
+        No description
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/AccessForbidden'
 
       tags:
         - Manager
@@ -418,6 +465,8 @@ components:
       description: No content!
     Ok:
       description: Successfull response!
+    AccessForbidden:
+      description: Access Forbidden!
 
   schemas:
     User:
@@ -443,6 +492,14 @@ components:
           type: string
         quantity:
           type: number
+
+    UserLogin:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
 
 
   securitySchemes:

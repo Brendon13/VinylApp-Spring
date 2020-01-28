@@ -2,7 +2,6 @@ package com.vinyl.controller;
 
 import com.vinyl.DTO.ItemDTO;
 import com.vinyl.DTO.MessageDTO;
-import com.vinyl.DTO.UserRoleDTO;
 import com.vinyl.config.JwtTokenUtil;
 import com.vinyl.model.*;
 import com.vinyl.service.*;
@@ -115,21 +114,5 @@ public class CommonController {
 
         messageDTO.setMessage("User deleted!");
         return new ResponseEntity<>(messageDTO, HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/verifyManager")
-    public ResponseEntity<UserRoleDTO> verifyManager(@RequestHeader("Authorization") String auth){
-        UserRoleDTO userRoleDTO = new UserRoleDTO();
-        String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
-
-        if(userService.findByEmailAddress(email).getUserRole().getId() == 2)
-        {
-            userRoleDTO.setRole(1L);
-        }
-        else {
-            userRoleDTO.setRole(0L);
-        }
-
-        return ResponseEntity.ok(userRoleDTO);
     }
 }

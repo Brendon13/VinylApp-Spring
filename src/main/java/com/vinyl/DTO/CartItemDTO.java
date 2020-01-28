@@ -1,6 +1,5 @@
 package com.vinyl.DTO;
 
-
 import com.vinyl.model.CartItem;
 
 public class CartItemDTO {

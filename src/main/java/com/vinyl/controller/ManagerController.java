@@ -7,8 +7,6 @@ import com.vinyl.service.ItemService;
 import com.vinyl.service.OrderService;
 import com.vinyl.service.StatusService;
 import com.vinyl.service.UserService;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -263,5 +261,21 @@ public class ManagerController {
             messageDTO.setMessage("You are not logged in!");
             return new ResponseEntity<>(messageDTO, HttpStatus.FORBIDDEN);
         }
+    }
+
+    @GetMapping(value = "/verifyManager")
+    public ResponseEntity<UserRoleDTO> verifyManager(@RequestHeader("Authorization") String auth){
+        UserRoleDTO userRoleDTO = new UserRoleDTO();
+        String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+
+        if(userService.findByEmailAddress(email).getUserRole().getId() == 2)
+        {
+            userRoleDTO.setRole(1L);
+        }
+        else {
+            userRoleDTO.setRole(0L);
+        }
+
+        return ResponseEntity.ok(userRoleDTO);
     }
 }

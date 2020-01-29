@@ -26,6 +26,23 @@ public class Item {
     @OneToOne(mappedBy="item", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private CartItem cartItem;
 
+    public Item(@NotBlank(message = "Name can't be blank") String name, @NotNull(message = "Price can't be blank") Double price, @NotBlank(message = "Description can't be blank") String description, @NotNull(message = "Quantity can't be blank") Long quantity) {
+        setName(name);
+        setPrice(price);
+        setDescription(description);
+        setQuantity(quantity);
+    }
+
+    public Item(Long id, @NotBlank(message = "Name can't be blank") String name, @NotNull(message = "Price can't be blank") Double price, @NotBlank(message = "Description can't be blank") String description, @NotNull(message = "Quantity can't be blank") Long quantity) {
+        setId(id);
+        setName(name);
+        setPrice(price);
+        setDescription(description);
+        setQuantity(quantity);
+    }
+
+    public Item(){}
+
     public Long getId() {
         return id;
     }

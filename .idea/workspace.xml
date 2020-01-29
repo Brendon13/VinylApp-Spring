@@ -4,16 +4,56 @@
     <list default="true" id="9a6ebc16-1575-44d2-8e0e-6e631aae8654" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/spring-boot-logger.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/spring-boot-logger.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/liquibase-changeLog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/liquibase-changeLog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/liquibase-diffChangeLog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/liquibase-diffChangeLog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/liquibase-outputChangeLog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/liquibase-outputChangeLog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/liquibase.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/liquibase.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/liquibase-changeLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/liquibase-diffChangeLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/liquibase-outputChangeLog.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/liquibase.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CommonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/controller/ManagerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vinyl/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config/swagger_config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config/swagger_config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinyl/config/WebSecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinyl/config/WebSecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vinyl/controller/CustomerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vinyl/controller/CustomerController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.common.DeleteUserTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.common.DeleteUserTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.common.GetVinylsTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.common.GetVinylsTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.common.TokenCreationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.common.TokenCreationTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.customer.AddVinylToCartTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.customer.AddVinylToCartTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.customer.CartDetailsTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.customer.CartDetailsTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.customer.PlaceOrderTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.customer.PlaceOrderTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.customer.RemoveVinylFromCartTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.customer.RemoveVinylFromCartTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.customer.UserCreationTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.customer.UserCreationTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.AddVinylToStoreTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.AddVinylToStoreTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.DeleteVinylFromStoreTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.DeleteVinylFromStoreTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.GetCustomersTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.GetCustomersTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.GetOrderFromUserTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.GetOrderFromUserTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.UpdateOrderStatusTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.UpdateOrderStatusTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.UpdateVinylTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.controller.manager.UpdateVinylTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.CartItemServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.CartItemServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.CartServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.CartServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.ItemServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.ItemServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.OrderServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.OrderServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.StatusServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.StatusServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.UserServiceTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.vinyl.service.UserServiceTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.common.DeleteUserTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.common.DeleteUserTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.common.GetVinylsTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.common.GetVinylsTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.common.TokenCreationTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.common.TokenCreationTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.customer.AddVinylToCartTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.customer.AddVinylToCartTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.customer.CartDetailsTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.customer.CartDetailsTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.customer.PlaceOrderTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.customer.PlaceOrderTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.customer.RemoveVinylFromCartTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.customer.RemoveVinylFromCartTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.customer.UserCreationTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.customer.UserCreationTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.AddVinylToStoreTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.AddVinylToStoreTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.DeleteVinylFromStoreTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.DeleteVinylFromStoreTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.GetCustomersTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.GetCustomersTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.GetOrderFromUserTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.GetOrderFromUserTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.UpdateOrderStatusTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.UpdateOrderStatusTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.UpdateVinylTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.controller.manager.UpdateVinylTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.CartItemServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.CartItemServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.CartServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.CartServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.ItemServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.ItemServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.OrderServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.OrderServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.StatusServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.StatusServiceTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.UserServiceTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.vinyl.service.UserServiceTest.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,10 +276,10 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="795" y="359" key="#com.intellij.fileTypes.FileTypeChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1576502419132" />
-    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1579790392264">
+    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser" timestamp="1580308640733">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1579790392264" />
+    <state x="830" y="240" key="#com.intellij.ide.util.MemberChooser/0.0.2048.1112@0.0.2048.1112" timestamp="1580308640733" />
     <state x="705" y="284" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576135220231">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
@@ -272,38 +312,38 @@
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
     <state x="805" y="311" key="FileChooserDialogImpl/0.0.2048.1112@0.0.2048.1112" timestamp="1579794263505" />
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1580221378743">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom" timestamp="1580309598486">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1580221378743" />
-    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1580221378742">
+    <state width="2005" height="301" key="GridCell.Tab.0.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1580309598486" />
+    <state width="2005" height="301" key="GridCell.Tab.0.center" timestamp="1580309598486">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1580221378742" />
-    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1580221378742">
+    <state width="2005" height="301" key="GridCell.Tab.0.center/0.0.2048.1112@0.0.2048.1112" timestamp="1580309598486" />
+    <state width="2005" height="301" key="GridCell.Tab.0.left" timestamp="1580309598486">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1580221378742" />
-    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1580221378743">
+    <state width="2005" height="301" key="GridCell.Tab.0.left/0.0.2048.1112@0.0.2048.1112" timestamp="1580309598486" />
+    <state width="2005" height="301" key="GridCell.Tab.0.right" timestamp="1580309598486">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1580221378743" />
-    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1580215353971">
+    <state width="2005" height="301" key="GridCell.Tab.0.right/0.0.2048.1112@0.0.2048.1112" timestamp="1580309598486" />
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom" timestamp="1580227447218">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1580215353971" />
-    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1580215353970">
+    <state width="2005" height="376" key="GridCell.Tab.1.bottom/0.0.2048.1112@0.0.2048.1112" timestamp="1580227447218" />
+    <state width="2005" height="376" key="GridCell.Tab.1.center" timestamp="1580227447218">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1580215353970" />
-    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1580215353970">
+    <state width="2005" height="376" key="GridCell.Tab.1.center/0.0.2048.1112@0.0.2048.1112" timestamp="1580227447218" />
+    <state width="2005" height="376" key="GridCell.Tab.1.left" timestamp="1580227447218">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1580215353970" />
-    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1580215353971">
+    <state width="2005" height="376" key="GridCell.Tab.1.left/0.0.2048.1112@0.0.2048.1112" timestamp="1580227447218" />
+    <state width="2005" height="376" key="GridCell.Tab.1.right" timestamp="1580227447218">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>
-    <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1580215353971" />
+    <state width="2005" height="376" key="GridCell.Tab.1.right/0.0.2048.1112@0.0.2048.1112" timestamp="1580227447218" />
     <state x="533" y="198" key="SettingsEditor" timestamp="1576846958387">
       <screen x="0" y="0" width="2048" height="1112" />
     </state>

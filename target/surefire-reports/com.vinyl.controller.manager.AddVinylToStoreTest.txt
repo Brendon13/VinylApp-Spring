@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.vinyl.controller.manager.AddVinylToStoreTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.201 s - in com.vinyl.controller.manager.AddVinylToStoreTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.16 s - in com.vinyl.controller.manager.AddVinylToStoreTest

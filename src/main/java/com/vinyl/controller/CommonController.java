@@ -42,14 +42,11 @@ public class CommonController {
 
     @PostMapping(value = "/users/login", produces = "application/json")
     public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody JwtRequest authenticationRequest) {
-        MessageDTO messageDTO = new MessageDTO();
-
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
         }
         catch (BadCredentialsException e) {
-            messageDTO.setMessage("User credentials invalid!");
-            return new ResponseEntity<>(messageDTO, HttpStatus.FORBIDDEN);
+            MessageResponse("User credentials invalid!", HttpStatus.OK);
         }
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
@@ -61,21 +58,22 @@ public class CommonController {
     public List<ItemDTO> getVinyl(@RequestHeader("Authorization") String auth){
         List<Item> item = itemService.findAll();
         List<ItemDTO> itemDTOS = new ArrayList<>();
-        item.forEach(item1 -> {
-            assert false;
-            itemDTOS.add(ItemDTO.build(item1));
-        });
+        item.forEach(item1 -> itemDTOS.add(ItemDTO.build(item1)));
         return itemDTOS;
     }
 
     @DeleteMapping(value = "/users/delete" , produces = "application/json")
-    public @ResponseBody ResponseEntity<MessageDTO> deleteUser(@RequestHeader("Authorization") String auth){
-        MessageDTO messageDTO = new MessageDTO();
-
+    public @ResponseBody
+    void deleteUser(@RequestHeader("Authorization") String auth){
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         userService.delete(userService.findById(userService.findByEmailAddress(email).getId()));
 
-        messageDTO.setMessage("User deleted!");
-        return new ResponseEntity<>(messageDTO, HttpStatus.OK);
+        MessageResponse("User deleted!", HttpStatus.OK);
+    }
+
+    public ResponseEntity<MessageDTO> MessageResponse(String message, HttpStatus httpStatus){
+        MessageDTO messageDTO = new MessageDTO();
+        messageDTO.setMessage(message);
+        return new ResponseEntity<>(messageDTO, httpStatus);
     }
 }

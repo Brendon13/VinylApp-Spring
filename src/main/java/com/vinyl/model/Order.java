@@ -37,6 +37,16 @@ public class Order {
     @JoinColumn(name = "status_id", foreignKey=@ForeignKey(name = "Fk_orders_status_id"))
     private Status status;
 
+    public Order(Double total_price, Date createdAt, Date updatedAt, User user, Status status) {
+        setTotal_price(total_price);
+        setCreatedAt(createdAt);
+        setUpdatedAt(updatedAt);
+        setUser(user);
+        setStatus(status);
+    }
+
+    public Order(){}
+
     public Long getId() {
         return id;
     }

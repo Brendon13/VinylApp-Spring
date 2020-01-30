@@ -8,13 +8,12 @@ servers:
 
 
 paths:
-  /users:
+  /users/customer:
     post:
       summary: Add customer Service
       description: |
         No description
       requestBody:
-        description: Optional description in *Markdown*
         required: true
         content:
           application/json:
@@ -32,15 +31,14 @@ paths:
           $ref: '#/components/responses/EmailInUse'
 
       tags:
-        - Customer
+        - User
 
-  /managers:
+  /users/managers:
     post:
       summary: Add manager Service
       description: |
         No description
       requestBody:
-        description: Optional description in *Markdown*
         required: true
         content:
           application/json:
@@ -58,7 +56,7 @@ paths:
           $ref: '#/components/responses/EmailInUse'
 
       tags:
-        - Manager
+        - User
 
   /users/login:
     post:
@@ -66,7 +64,6 @@ paths:
       description: |
         No description
       requestBody:
-        description: Optional description in *Markdown*
         required: true
         content:
           application/json:
@@ -84,7 +81,7 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Common
+        - User
 
   /vinyls:
     get:
@@ -105,7 +102,7 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Common
+        - Item
 
   /users/delete:
     delete:
@@ -128,9 +125,9 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Common
+        - User
 
-  /customer/cart/detail:
+  /cart/customer/detail:
     get:
       security:
         - bearerAuth: []
@@ -149,9 +146,9 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Customer
+        - Cart
 
-  /vinyls/cart/{vinyl_id}:
+  /cart/customer/{item_id}:
     post:
       security:
         - bearerAuth: []
@@ -183,9 +180,8 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Customer
+        - Cart
 
-  /users/cart/{item_id}:
     delete:
       security:
         - bearerAuth: []
@@ -211,10 +207,10 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Customer
+        - Cart
 
   /orders:
-    put:
+    post:
       security:
         - bearerAuth: []
       summary: Place order
@@ -232,9 +228,9 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Customer
+        - Order
 
-  /vinylsAdd:
+  /vinyls/add:
     post:
       security:
         - bearerAuth: []
@@ -242,7 +238,6 @@ paths:
       description: |
         No description
       requestBody:
-        description: Optional description in *Markdown*
         required: true
         content:
           application/json:
@@ -260,7 +255,7 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Manager
+        - Item
 
   /vinyls/{vinyl_id}:
     delete:
@@ -288,7 +283,7 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Manager
+        - Item
     put:
       security:
         - bearerAuth: []
@@ -296,7 +291,6 @@ paths:
       description: |
         No description
       requestBody:
-        description: Optional description in *Markdown*
         required: true
         content:
           application/json:
@@ -320,7 +314,7 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Manager
+        - Item
 
     get:
       security:
@@ -347,7 +341,7 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Manager
+        - Item
 
   /orders/{order_id}:
     put:
@@ -380,9 +374,9 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Manager
+        - Order
 
-  /customers:
+  /users/customers:
     get:
       security:
         - bearerAuth: []
@@ -401,9 +395,9 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Manager
+        - User
 
-  /users/{user_id}/orders:
+  /orders/{user_id}:
     get:
       security:
         - bearerAuth: []
@@ -430,9 +424,30 @@ paths:
 
 
       tags:
-        - Manager
+        - Order
 
-  /verifyManager:
+  /orders/user:
+    get:
+      security:
+        - bearerAuth: []
+      summary: Get order for an user
+      description: |
+        No description
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/AccessForbidden'
+
+      tags:
+        - Order
+
+  /users/role:
     get:
       security:
         - bearerAuth: []
@@ -451,7 +466,7 @@ paths:
           $ref: '#/components/responses/AccessForbidden'
 
       tags:
-        - Manager
+        - User
 
 components:
   responses:

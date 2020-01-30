@@ -1,5 +1,6 @@
 package com.vinyl.service;
 
+import com.vinyl.exception.ItemNotFoundException;
 import com.vinyl.model.Item;
 import com.vinyl.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class ItemServiceImpl implements ItemService{
 
     @Override
     public Optional<Item> findById(Long id){
-        return itemRepository.findById(id);
+        return Optional.ofNullable(itemRepository.findById(id).orElseThrow(() -> new ItemNotFoundException(id)));
     }
 
     @Override

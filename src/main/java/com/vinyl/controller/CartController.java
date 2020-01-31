@@ -48,10 +48,12 @@ public class CartController {
 
         cartItem.forEach(cartItem1 -> cartItemDTOS.add(CartItemDTO.build(cartItem1)));
 
-        if(cartItem.size() == 0){
+        if(cartItem.size() == 0) {
             return MessageResponse("No items in cart!", HttpStatus.NOT_FOUND);
         }
-        else return new ResponseEntity<>(cartItemDTOS, HttpStatus.OK);
+        else {
+            return new ResponseEntity<>(cartItemDTOS, HttpStatus.OK);
+        }
     }
 
     @PostMapping(value = "/cart/customer/{item_id}", produces = "application/json")
@@ -63,21 +65,24 @@ public class CartController {
         Cart cart = cartService.findByUserId(userService.findByEmailAddress(email).getId());
         CartItem cartItem = new CartItem();
 
-        if (cartItemQuantityDTO.getQuantity() <= 0){
+        if (cartItemQuantityDTO.getQuantity() <= 0) {
             return MessageResponse("Quantity can't be negative or zero!", HttpStatus.FORBIDDEN);
         }
-        else if (cartItemQuantityDTO.getQuantity() > optionalItem.get().getQuantity()) {
-            return MessageResponse("Quantity can't be negative or zero!", HttpStatus.FORBIDDEN);
-        }
-            else if(cartItemService.findByItemIdAndCartId(item_id, cart.getId()).isPresent() && cartItemService.findByItemIdAndCartId(item_id, cart.getId()).get().getCart() != null){
-                cartItem = cartItemService.findByItemIdAndCartId(item_id, cart.getId()).get();
-                messageDTO.setMessage("Item updated from cart!");
-                }
-                else {
+        else {
+            if (cartItemQuantityDTO.getQuantity() > optionalItem.get().getQuantity()) {
+                return MessageResponse("Quantity can't be negative or zero!", HttpStatus.FORBIDDEN);
+            } else {
+                if (cartItemService.findByItemIdAndCartId(item_id, cart.getId()).isPresent() && cartItemService.findByItemIdAndCartId(item_id, cart.getId()).get().getCart() != null) {
+                    cartItem = cartItemService.findByItemIdAndCartId(item_id, cart.getId()).get();
+                    messageDTO.setMessage("Item updated from cart!");
+                } else {
                     cartItem.setItem(optionalItem.get());
                     cartItem.setCart(cart);
                     messageDTO.setMessage("Item added to cart!");
+                    }
                 }
+            }
+
         cartItem.setQuantity(cartItemQuantityDTO.getQuantity());
         cartItemService.save(cartItem);
 
@@ -98,7 +103,9 @@ public class CartController {
             });
             return MessageResponse("Item deleted from cart!", HttpStatus.OK);
         }
-        else return MessageResponse("No items in cart!", HttpStatus.FORBIDDEN);
+        else {
+            return MessageResponse("No items in cart!", HttpStatus.FORBIDDEN);
+        }
     }
 
     public ResponseEntity<MessageDTO> MessageResponse(String message, HttpStatus httpStatus){

@@ -15,7 +15,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 
 @Configuration
@@ -60,9 +59,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/config/swagger_config.yaml",
 
             "/VinylStore/api/users",
-            "/VinylStore/api/users/login",
-            "/VinylStore/api/managers",
-            "/VinylStore/api/verifyManager"
+            "/VinylStore/api/users/login"
+    };
+
+    private static final String[] AUTH_MANAGER = {
+            "/VinylStore/api/users/manager",
+            "/VinylStore/api/users/customers",
+
     };
 
     @Override
@@ -82,7 +85,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
+
+
 
         CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
         corsConfiguration.addAllowedMethod(HttpMethod.DELETE);

@@ -131,7 +131,7 @@ public class AddVinylToStoreTest {
 
         verify(itemService, times(1)).save(item);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/add")
+        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")
@@ -181,7 +181,7 @@ public class AddVinylToStoreTest {
 
         verify(itemService, times(1)).save(item);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/add")
+        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")
@@ -231,7 +231,7 @@ public class AddVinylToStoreTest {
 
         verify(itemService, times(1)).save(item);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/add")
+        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")
@@ -281,7 +281,7 @@ public class AddVinylToStoreTest {
 
         verify(itemService, times(1)).save(item);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/add")
+        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")
@@ -331,7 +331,7 @@ public class AddVinylToStoreTest {
 
         verify(itemService, times(1)).save(item);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/add")
+        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")
@@ -381,7 +381,7 @@ public class AddVinylToStoreTest {
 
         verify(itemService, times(1)).save(item);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls/add")
+        mockMvc.perform(MockMvcRequestBuilders.post("/VinylStore/api/vinyls")
                 .header("Authorization", auth)
                 .contentType("application/json")
                 .characterEncoding("utf-8")

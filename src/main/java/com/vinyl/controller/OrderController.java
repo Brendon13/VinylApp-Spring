@@ -58,9 +58,10 @@ public class OrderController {
                 quantityResponse.add(false);
         });
 
-        if(quantityResponse.contains(false))
-            return MessageResponse("No more items availabile!", HttpStatus.BAD_REQUEST);
-        else{
+        if(quantityResponse.contains(false)) {
+            return MessageResponse("No more items available!", HttpStatus.BAD_REQUEST);
+        }
+        else {
             cartItem.forEach(cItem -> cItem.getItem().setQuantity(cItem.getItem().getQuantity()-cItem.getQuantity()));
             order = new Order(totalPrice, new Date(), new Date(), userService.findById(userService.findByEmailAddress(email).getId()), statusService.findById(1L));
             orderService.save(order);
@@ -74,25 +75,30 @@ public class OrderController {
 
     @PutMapping(value = "/orders/{order_id}", produces = "application/json")
     public @ResponseBody ResponseEntity<MessageDTO> updateOrder(@RequestHeader("Authorization") String auth, @RequestBody StatusDTO status, @PathVariable Long order_id){
-        Order order;
-        Date date = new Date();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
+        Order order;
 
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
             if(orderService.findById(order_id).isPresent()){
                 if(status.getId() == 1 || status.getId() == 2){
                     order = orderService.findById(order_id).get();
                     order.setStatus(statusService.findById(status.getId()));
-                    order.setUpdatedAt(date);
+                    order.setUpdatedAt(new Date());
                     orderService.save(order);
 
                     return MessageResponse("Order status changed!", HttpStatus.OK);
                 }
-                else return MessageResponse("Status is not a valid Id!", HttpStatus.FORBIDDEN);
+                else {
+                    return MessageResponse("Status is not a valid Id!", HttpStatus.FORBIDDEN);
+                }
             }
-            else return MessageResponse("Order doesn't exist!", HttpStatus.NOT_FOUND);
+            else {
+                return MessageResponse("Order doesn't exist!", HttpStatus.NOT_FOUND);
+            }
         }
-        else return MessageResponse("You are not a manager!", HttpStatus.FORBIDDEN);
+        else {
+            return MessageResponse("You are not a manager!", HttpStatus.FORBIDDEN);
+        }
     }
 
     @GetMapping(value = "/orders/{user_id}", produces = "application/json")
@@ -111,11 +117,17 @@ public class OrderController {
                     orderDTOS.add(OrderDTO.build(order));
                 });
 
-                if(orderDTOS.isEmpty()) return MessageResponse("No orders placed!", HttpStatus.NOT_FOUND);
-                else return new ResponseEntity<>(orderDTOS, HttpStatus.OK);
+                if(orderDTOS.isEmpty()) {
+                    return MessageResponse("No orders placed!", HttpStatus.NOT_FOUND);
+                }
+                else {
+                    return new ResponseEntity<>(orderDTOS, HttpStatus.OK);
+                }
             }
         }
-        else return MessageResponse("You are not a manager!", HttpStatus.NOT_FOUND);
+        else {
+            return MessageResponse("You are not a manager!", HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping(value = "/orders/user", produces = "application/json")

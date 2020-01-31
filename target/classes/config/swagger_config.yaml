@@ -104,6 +104,32 @@ paths:
       tags:
         - Item
 
+    post:
+      security:
+        - bearerAuth: []
+      summary: Add vinyl to store
+      description: |
+        No description
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Item'
+
+      responses:
+        200:
+          $ref: '#/components/responses/Ok'
+        400:
+          $ref: '#/components/responses/UnexpectedParameters'
+        401:
+          $ref: '#/components/responses/UnauthorizedError'
+        403:
+          $ref: '#/components/responses/AccessForbidden'
+
+      tags:
+        - Item
+
   /users/delete:
     delete:
       security:
@@ -229,33 +255,6 @@ paths:
 
       tags:
         - Order
-
-  /vinyls/add:
-    post:
-      security:
-        - bearerAuth: []
-      summary: Add vinyl to store
-      description: |
-        No description
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Item'
-
-      responses:
-        200:
-          $ref: '#/components/responses/Ok'
-        400:
-          $ref: '#/components/responses/UnexpectedParameters'
-        401:
-          $ref: '#/components/responses/UnauthorizedError'
-        403:
-          $ref: '#/components/responses/AccessForbidden'
-
-      tags:
-        - Item
 
   /vinyls/{vinyl_id}:
     delete:

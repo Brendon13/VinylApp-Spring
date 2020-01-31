@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
@@ -49,30 +48,28 @@ public class UserController {
             cartService.save(cart);
 
             return MessageResponse("User Created!", HttpStatus.OK);
-        } else {
+        }
+        else {
             return MessageResponse("Email already in use!", HttpStatus.FORBIDDEN);
         }
     }
 
     @PostMapping(value = "/users/manager", produces = "application/json")
-    public void addManager(@Valid @RequestBody User user){
+    public ResponseEntity<MessageDTO> addManager(@Valid @RequestBody User user, @RequestHeader("Authorization") String auth){
         if (userService.findByEmailAddress(user.getEmailAddress()) == null) {
             userService.saveManager(user);
 
-            MessageResponse("Manager Created!", HttpStatus.OK);
-        } else {
-            MessageResponse("Email already in use!", HttpStatus.FORBIDDEN);
+            return MessageResponse("Manager Created!", HttpStatus.OK);
+        }
+        else {
+            return MessageResponse("Email already in use!", HttpStatus.FORBIDDEN);
         }
     }
 
     @PostMapping(value = "/users/login", produces = "application/json")
     public ResponseEntity<?> createAuthenticationToken(@Valid @RequestBody JwtRequest authenticationRequest) {
-        try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
-        }
-        catch (BadCredentialsException e) {
-            MessageResponse("User credentials invalid!", HttpStatus.OK);
-        }
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(), authenticationRequest.getPassword()));
+
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
 
@@ -80,20 +77,18 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/users/delete" , produces = "application/json")
-    public @ResponseBody
-    void deleteUser(@RequestHeader("Authorization") String auth){
+    public @ResponseBody ResponseEntity<MessageDTO> deleteUser(@RequestHeader("Authorization") String auth){
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         userService.delete(userService.findById(userService.findByEmailAddress(email).getId()));
 
-        MessageResponse("User deleted!", HttpStatus.OK);
+        return MessageResponse("User deleted!", HttpStatus.OK);
     }
 
     @GetMapping(value = "/users/customers", produces = "application/json")
-    public ResponseEntity<Object> getCustomers(@RequestHeader("Authorization") String auth){
+    public ResponseEntity<?> getCustomers(@RequestHeader("Authorization") String auth){
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
-        MessageDTO messageDTO = new MessageDTO();
 
-        if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
+        //if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
             UserRole userRole = new UserRole(1L,"customer");
             List<User> users = userService.findByUserRole(userRole);
             List<UserDTO> userDTOS = new ArrayList<>();
@@ -103,11 +98,10 @@ public class UserController {
             });
 
             return new ResponseEntity<>(userDTOS, HttpStatus.OK);
-        }
-        else {
-            messageDTO.setMessage("You are not a manager!");
-            return new ResponseEntity<>(messageDTO, HttpStatus.FORBIDDEN);
-        }
+//        }
+//        else {
+//            return MessageResponse("You are not a manager!", HttpStatus.FORBIDDEN);
+//        }
     }
 
     @GetMapping(value = "/users/role")
@@ -115,11 +109,12 @@ public class UserController {
         UserRoleDTO userRoleDTO = new UserRoleDTO();
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
 
-        if(userService.findByEmailAddress(email).getUserRole().getId() == 2)
+        if(userService.findByEmailAddress(email).getUserRole().getId() == 2) {
             userRoleDTO.setRole(1L);
-        else
+        }
+        else {
             userRoleDTO.setRole(0L);
-
+        }
         return ResponseEntity.ok(userRoleDTO);
     }
 

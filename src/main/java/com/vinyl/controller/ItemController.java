@@ -40,7 +40,9 @@ public class ItemController {
             ItemDTO itemDTO = ItemDTO.build(itemService.findById(vinyl_id).get());
             return new ResponseEntity<>(itemDTO, HttpStatus.OK);
         }
-        else return MessageResponse("Not a valid Id!", HttpStatus.FORBIDDEN);
+        else {
+            return MessageResponse("Not a valid Id!", HttpStatus.FORBIDDEN);
+        }
     }
 
     @PutMapping(value = "/vinyls/{vinyl_id}", produces = "application/json")
@@ -49,50 +51,62 @@ public class ItemController {
 
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
             try {
-                if (vinyl.getQuantity() <= 0)
+                if (vinyl.getQuantity() <= 0){
                     return MessageResponse("Quantity can't be negative!", HttpStatus.FORBIDDEN);
-                else if(vinyl.getPrice() <= 0)
+                }
+                else if(vinyl.getPrice() <= 0) {
                     return MessageResponse("Price can't be negative!", HttpStatus.FORBIDDEN);
+                }
                     else {
                         if (itemService.findById(vinyl_id).isPresent()) {
                             itemService.save(new Item(vinyl_id, vinyl.getName(), vinyl.getPrice(), vinyl.getDescription(), vinyl.getQuantity()));
                             return MessageResponse("Item updated!", HttpStatus.OK);
                         }
-                        else return MessageResponse("Item doesn't exists!", HttpStatus.FORBIDDEN);
+                        else {
+                            return MessageResponse("Item doesn't exists!", HttpStatus.FORBIDDEN);
+                        }
                     }
             }
             catch (NullPointerException e){
                 return MessageResponse("Quantity can't be null!", HttpStatus.FORBIDDEN);
             }
         }
-        else return MessageResponse("You are not a manager!", HttpStatus.FORBIDDEN);
+        else {
+            return MessageResponse("You are not a manager!", HttpStatus.FORBIDDEN);
+        }
     }
 
-    @PostMapping(value = "/vinyls/add", produces = "application/json")
+    @PostMapping(value = "/vinyls", produces = "application/json")
     public ResponseEntity<MessageDTO> addVinyl(@RequestHeader("Authorization") String auth, @RequestBody Item vinyl){
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
         Item item;
 
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
             try {
-                if (vinyl.getQuantity() <= 0){
+                if (vinyl.getQuantity() <= 0) {
                     return MessageResponse("Quantity can't be negative!", HttpStatus.FORBIDDEN);
                 }
-                else if(vinyl.getPrice() <= 0){
+                else if(vinyl.getPrice() <= 0) {
                     return MessageResponse("Price can't be negative!", HttpStatus.FORBIDDEN);
                 }
-                    else if(itemService.findByName(vinyl.getName()) == null){
+                    else {
+                        if (itemService.findByName(vinyl.getName()) == null) {
                             item = new Item(vinyl.getName(), vinyl.getPrice(), vinyl.getDescription(), vinyl.getQuantity());
                             itemService.save(item);
                             return MessageResponse("Item inserted!", HttpStatus.OK);
                         }
-                        else return MessageResponse("Item already exists!", HttpStatus.FORBIDDEN);
-            }
+                        else {
+                            return MessageResponse("Item already exists!", HttpStatus.FORBIDDEN);
+                        }
+                    }
+                }
             catch (NullPointerException e){
                 return MessageResponse("Quantity can't be null!", HttpStatus.FORBIDDEN);
             }
         }
-        else return MessageResponse("You are not a manager!", HttpStatus.FORBIDDEN);
+        else {
+            return MessageResponse("You are not a manager!", HttpStatus.FORBIDDEN);
+        }
 
     }
 
@@ -101,20 +115,19 @@ public class ItemController {
         String email = jwtTokenUtil.getUsernameFromToken(auth.substring(7));
 
         if(userService.findByEmailAddress(email).getUserRole().getId() == 2){
-            try{
                 if(itemService.findById(vinyl_id).isPresent()){
                     Item item = itemService.findById(vinyl_id).get();
                     itemService.delete(item);
 
                     return MessageResponse("Item Deleted!", HttpStatus.NO_CONTENT);
                 }
-                else return MessageResponse("Item doesn't exists!", HttpStatus.NOT_FOUND);
-            }
-            catch (NullPointerException e) {
-                return MessageResponse("Item doesn't exists!", HttpStatus.NOT_FOUND);
-            }
+                else {
+                    return MessageResponse("Item doesn't exists!", HttpStatus.NOT_FOUND);
+                }
         }
-        else return MessageResponse("You are not a manager!", HttpStatus.FORBIDDEN);
+        else {
+            return MessageResponse("You are not a manager!", HttpStatus.FORBIDDEN);
+        }
     }
 
     public ResponseEntity<MessageDTO> MessageResponse(String message, HttpStatus httpStatus){
